@@ -1,0 +1,200 @@
+{
+    "name": "StandardInput",
+    "maps": [
+        {
+            "name": "InputBasic",
+            "id": "574020d8-e5f4-4943-8878-10a7416938c6",
+            "actions": [
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "7e84cfca-63dc-42bb-a7bd-2825159f1864",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "350c99d3-056f-4e31-aff8-25368e561309",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputBuild",
+            "id": "8706504a-90a7-4ea8-ab98-ab490d14c3a5",
+            "actions": [
+                {
+                    "name": "Build",
+                    "type": "Button",
+                    "id": "d904953d-b649-4036-82d4-be80c6f6f962",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "21323baf-a9df-43ab-afec-d84ad41f1294",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "751ef2d2-bd4e-4290-af66-9644da01c3b5",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c68ff1e5-9d27-4865-aef8-375d730cfe9c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputCamera",
+            "id": "4213d4a4-4a60-4169-960f-920664dd4f0a",
+            "actions": [
+                {
+                    "name": "EnableMovement",
+                    "type": "PassThrough",
+                    "id": "3e6fc9b6-2fb0-48c1-84a3-792c52fd1ac0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EnableRotating",
+                    "type": "PassThrough",
+                    "id": "c4ee667b-1cb3-4f26-b033-13861a22149c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7cdf5a8b-bb1e-400c-8f2a-bd085b0e3200",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnableMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "212d29e9-e17f-4b71-8675-0fee0bfd166b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnableRotating",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputGameState",
+            "id": "95fddea4-e35e-4fbd-a893-72d97aab6fb0",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "a8fc5c94-d5c2-4914-b00d-620cd129d22f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Playing",
+                    "type": "Button",
+                    "id": "5075781d-0688-4fdd-b830-682aa8c84d7c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "One Modifier",
+                    "id": "45afb316-0842-4458-9586-b600f0896cd6",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "fa0816b8-77e8-4308-86ff-3d4595df9e2f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "cba59d84-5754-431f-b2d4-0b1fe9325f1e",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "99715b05-c539-4df4-9a7b-1624460a7e6b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Playing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
