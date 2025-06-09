@@ -11,7 +11,7 @@ namespace MuHua {
 		/// <summary> 当前动作 </summary>
 		public IKinesis currentKinesis;
 
-		public MCharacterStandard(Animator animator, LayerMask ground) : base(animator) {
+		public MCharacterStandard(Animator animator, Transform transform, LayerMask ground) : base(animator) {
 			movement = new MovementStandard(transform, ground);
 
 			Transition(new KIdle());

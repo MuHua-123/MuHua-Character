@@ -8,8 +8,6 @@ namespace MuHua {
 	/// </summary>
 	public abstract class MCharacter {
 
-		/// <summary> 变换器 </summary>
-		public Transform transform;
 		/// <summary> 动画器 </summary>
 		public Animator animator;
 		/// <summary> 运动器 </summary>

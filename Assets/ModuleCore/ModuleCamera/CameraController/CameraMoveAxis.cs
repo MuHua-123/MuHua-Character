@@ -28,7 +28,7 @@ public class CameraMoveAxis : CameraController {
 		get => transform.eulerAngles;
 		set => transform.eulerAngles = value;
 	}
-	public override float Distance {
+	public override float VisualField {
 		get => GetVisualField();
 		set => SetVisualField(value);
 	}
@@ -44,11 +44,7 @@ public class CameraMoveAxis : CameraController {
 		// depthOfField.focusDistance.SetValue(new FloatParameter(value));
 	}
 
-	public override void Initialize() {
-		ModuleCamera.OnCameraMode += ModuleCamera_OnCameraMode;
-	}
-
-	private void ModuleCamera_OnCameraMode(EnumCameraMode mode) {
+	public override void ModuleCamera_OnCameraMode(EnumCameraMode mode) {
 		gameObject.SetActive(mode == EnumCameraMode.MoveAxis);
 		if (mode == EnumCameraMode.MoveAxis) { ModuleCamera.CurrentCamera = this; }
 	}

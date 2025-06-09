@@ -25,8 +25,6 @@ namespace MuHua {
 		/// <summary> 初始设置 </summary>
 		public bool isInitial = false;
 
-		/// <summary> 变换器 </summary>
-		public Transform transform => character.transform;
 		/// <summary> 动画器 </summary>
 		public Animator animator => character.animator;
 		/// <summary> 运动器 </summary>
@@ -54,8 +52,7 @@ namespace MuHua {
 		public override void StartKinesis() {
 			movement.Move(moveDirection, moveSpeed, acceleration, isRotation);
 			if (!isInitial) { return; }
-			transform.position = position;
-			transform.eulerAngles = eulerAngles;
+			movement.Settings(position, eulerAngles);
 		}
 		public override void UpdateKinesis() {
 			// 更新动画器

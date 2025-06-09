@@ -39,6 +39,11 @@ namespace MuHua {
 			this.groundLayers = groundLayers;
 		}
 
+		/// <summary> 设置位置 </summary>
+		public override void Settings(Vector3 position, Vector3 eulerAngles) {
+			controller.transform.position = position;
+			controller.transform.eulerAngles = eulerAngles;
+		}
 		/// <summary> 移动 </summary>
 		public override void Move(Vector2 moveDirection, float moveSpeed, float acceleration, bool isRotation) {
 			this.moveSpeed = moveSpeed;

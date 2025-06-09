@@ -39,6 +39,11 @@ namespace MuHua {
 			this.groundLayers = groundLayers;
 		}
 
+		/// <summary> 设置位置 </summary>
+		public override void Settings(Vector3 position, Vector3 eulerAngles) {
+			transform.position = position;
+			transform.eulerAngles = eulerAngles;
+		}
 		/// <summary> 移动 </summary>
 		public override void Move(Vector2 moveDirection, float moveSpeed, float acceleration, bool isRotation) {
 			this.moveSpeed = moveSpeed;
@@ -67,26 +72,35 @@ namespace MuHua {
 			// 使输入方向标准化
 			Vector3 inputDirection = new Vector3(moveDirection.x, 0.0f, moveDirection.y).normalized;
 
-			// 如果有移动输入，则在玩家移动时旋转玩家
-			if (moveDirection != Vector2.zero && isRotation) {
-				targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
-				float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, rotationSmoothTime);
+			if (isRotation) {
+				// 如果有移动输入，则在玩家移动时旋转玩家
+				if (moveDirection != Vector2.zero && isRotation) {
+					targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
+					float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, rotationSmoothTime);
 
-				// 相对于相机位置旋转到面向输入方向
-				transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+					// 相对于相机位置旋转到面向输入方向
+					transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+				}
+
+				// 移动
+				Vector3 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
+				Vector3 horizontal = targetDirection.normalized * (currentSpeed * Time.deltaTime);
+				Vector3 vertical = new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime;
+				transform.position += horizontal + vertical;
 			}
-
-			// 移动
-			Vector3 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
-			Vector3 horizontal = targetDirection.normalized * (currentSpeed * Time.deltaTime);
-			Vector3 vertical = new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime;
-			transform.position += horizontal + vertical;
+			else {
+				// 移动
+				Vector3 horizontal = inputDirection * (currentSpeed * Time.deltaTime);
+				Vector3 vertical = new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime;
+				transform.position += horizontal + vertical;
+			}
 
 			// 地面检测
 			Vector3 position = transform.position;
 			Vector3 rayOrigin = new Vector3(position.x, position.y + groundedRadius, position.z);
 			// 射线长度稍微大于检测半径
-			float rayLength = groundedRadius * 2 + 0.1f;
+			float rayLength = groundedRadius;
+			// float rayLength = groundedRadius * 2 + 0.1f;
 			// 使用射线检测地面
 			grounded = Physics.Raycast(rayOrigin, Vector3.down, rayLength, groundLayers, QueryTriggerInteraction.Ignore);
 			// 可选：调试显示射线
@@ -95,7 +109,7 @@ namespace MuHua {
 			// 引力
 			verticalVelocity += Gravity * Time.deltaTime;
 			// 站在地面上时，限制最大下落速度
-			if (grounded && verticalVelocity < 0.0f) { verticalVelocity = -2f; }
+			if (grounded && verticalVelocity < 0.0f) { verticalVelocity = 0f; }
 		}
 	}
 }

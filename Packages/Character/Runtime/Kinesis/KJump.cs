@@ -35,8 +35,6 @@ namespace MuHua {
 		/// <summary> 初始设置 </summary>
 		public bool isInitial = false;
 
-		/// <summary> 变换器 </summary>
-		public Transform transform => character.transform;
 		/// <summary> 动画器 </summary>
 		public Animator animator => character.animator;
 		/// <summary> 运动器 </summary>
@@ -46,6 +44,7 @@ namespace MuHua {
 			this.character = character;
 			this.moveDirection = moveDirection;
 			this.jumpHeight = jumpHeight;
+			this.isRotation = isRotation;
 		}
 
 		public void Settings(float moveSpeed, float acceleration) {
@@ -62,16 +61,15 @@ namespace MuHua {
 			return isTransition;
 		}
 		public override void StartKinesis() {
-			if (isInitial) {
-				character.transform.position = position;
-				character.transform.eulerAngles = eulerAngles;
-			}
 			isEndJump = false;
 			isTransition = false;
 			isGrounded = movement.Grounded;
 			decaySpeed = movement.Speed;
 			movement.Jump(jumpHeight);
 			animator.SetTrigger("JumpStart");
+
+			if (!isInitial) { return; }
+			movement.Settings(position, eulerAngles);
 		}
 		public override void UpdateKinesis() {
 			if (isEndJump) { return; }

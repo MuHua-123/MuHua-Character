@@ -22,7 +22,7 @@ public static class Utilities {
 	}
 
 	/// <summary> 输入方向 转换成 目标的相对方向  </summary>
-	public static Vector3 TransferDirection(Vector3 forward, Vector3 right, Vector2 inputDirection) {
+	public static Vector2 TransferDirection(Vector3 forward, Vector3 right, Vector2 inputDirection) {
 		// 确保前方和右方方向在水平面上
 		forward.y = 0;
 		right.y = 0;
@@ -32,6 +32,7 @@ public static class Utilities {
 		right.Normalize();
 
 		// 计算移动方向
-		return (forward * inputDirection.y + right * inputDirection.x).normalized;
+		Vector3 moveDirection = (forward * inputDirection.y + right * inputDirection.x).normalized;
+		return new Vector2(moveDirection.x, moveDirection.z);
 	}
 }
