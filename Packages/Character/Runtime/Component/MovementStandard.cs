@@ -34,6 +34,8 @@ namespace MuHua {
 
 		public override bool Grounded => grounded;
 
+		public override Vector3 Position => transform.position;
+
 		public MovementStandard(Transform transform, LayerMask groundLayers) {
 			this.transform = transform;
 			this.groundLayers = groundLayers;

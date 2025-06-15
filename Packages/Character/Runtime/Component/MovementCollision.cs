@@ -34,6 +34,8 @@ namespace MuHua {
 
 		public override bool Grounded => grounded;
 
+		public override Vector3 Position => controller.transform.position;
+
 		public MovementCollision(CharacterController controller, LayerMask groundLayers) {
 			this.controller = controller;
 			this.groundLayers = groundLayers;
