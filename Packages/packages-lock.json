@@ -234,8 +234,14 @@
       },
       "url": "https://packages.unity.cn"
     },
-    "muhua-character": {
-      "version": "file:Character",
+    "muhua-hcharacter": {
+      "version": "file:HCharacter",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "muhua-mcharacter": {
+      "version": "file:MCharacter",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

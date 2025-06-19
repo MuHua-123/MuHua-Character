@@ -1,8 +1,8 @@
 {
-  "name": "muhua-character",
+  "name": "muhua-hcharacter",
   "version": "1.0.0",
-  "displayName": "MuHua Character",
-  "description": "\u89d2\u8272\u6a21\u5757\u5305",
+  "displayName": "MuHua HCharacter",
+  "description": "\u89d2\u8272\u70ed\u66f4\u5305",
   "author": {
     "name": "MuHua",
     "email": "muhua233@qq.com"
