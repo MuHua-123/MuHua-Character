@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 运行模式
+/// 标准 - 角色热更数据
 /// </summary>
-public enum EnumRunningMode {
-	None,// 无模式
+public class HCharacterStandard : HCharacter {
 
-	Standard,// 标准模式
 }

@@ -16,21 +16,17 @@ public class InputCharacter : InputControl {
 		// throw new System.NotImplementedException();
 	}
 
-	protected override void ModuleInput_OnTemporarilyDisable(bool obj) {
-		// throw new System.NotImplementedException();
-	}
-
 	#region 输入系统
 	public void OnMove(InputValue inputValue) {
 		// 获取移动输入
 		moveInput = inputValue.Get<Vector2>();
 		Vector2 moveDirection = Utilities.TransferDirection(CurrentCamera.Forward, CurrentCamera.Right, moveInput);
 
-		ManagerPlayer.I.Move(moveDirection, true);
+		ManagerCharacter.I.Move(moveDirection);
 	}
 	public void OnJump(InputValue inputValue) {
 		Vector2 moveDirection = Utilities.TransferDirection(CurrentCamera.Forward, CurrentCamera.Right, moveInput);
-		ManagerPlayer.I.Jump(moveDirection, 2, true);
+		ManagerCharacter.I.Jump(moveDirection);
 	}
 	#endregion
 }

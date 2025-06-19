@@ -22,3 +22,17 @@ public class ModuleUI : ModuleSingle<ModuleUI> {
 	/// <summary> 跳转页面 </summary>
 	public static void Jump(EnumPage pageType) => OnJumpPage?.Invoke(pageType);
 }
+/// <summary>
+/// 页面类型
+/// </summary>
+public enum EnumPage {
+	None,
+
+	Menu,// 主菜单
+	Scene,// 场景选择
+	Prepare,// 准备游戏
+	Battle,// 战斗页面
+	Settlement,// 结算页面
+
+	Settings,// 游戏设置
+}

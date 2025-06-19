@@ -9,7 +9,7 @@ using MuHua;
 public class ModuleVisual : ModuleSingle<ModuleVisual> {
 
 	/// <summary> 炮塔生成器 </summary>
-	// public VisualGenerator<HTurret> HTurret;
+	public VisualController<CCharacter> Character;
 	/// <summary> 子弹生成器 </summary>
 	// public VisualGenerator<HBullet> HBullet;
 	/// <summary> 怪物生成器 </summary>

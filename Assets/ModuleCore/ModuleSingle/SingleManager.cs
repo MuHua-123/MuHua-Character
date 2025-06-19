@@ -8,4 +8,8 @@ using MuHua;
 /// </summary>
 public class SingleManager : ModuleSingle<SingleManager> {
 	protected override void Awake() => NoReplace();
+	private void Start() {
+		ModuleCamera.Settings(EnumCameraMode.MoveAxis);
+		ManagerCharacter.I.Create();
+	}
 }
