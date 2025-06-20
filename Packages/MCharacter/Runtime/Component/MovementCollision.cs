@@ -53,7 +53,7 @@ namespace MuHua {
 			this.moveDirection = moveDirection;
 			this.isRotation = isRotation;
 		}
-		/// <summary> H*-2*G的平方根=达到所需高度所需的速度 </summary>
+		/// <summary> H*-2*G的平方根=达到所需高度所需的速度(需要取消动画器的根运动) </summary>
 		public override void Jump(float jumpHeight) {
 			verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * Gravity);
 		}

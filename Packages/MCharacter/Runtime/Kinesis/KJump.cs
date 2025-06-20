@@ -11,9 +11,9 @@ namespace MuHua {
 		public readonly MCharacter character;
 
 		/// <summary> 结束跳跃 </summary>
-		public bool isEndJump;
+		// public bool isEndJump;
 		/// <summary> 是否接地 </summary>
-		public bool isGrounded;
+		// public bool isGrounded;
 		/// <summary> 允许转换 </summary>
 		public bool isTransition;
 		/// <summary> 跳跃高度 </summary>
@@ -61,30 +61,15 @@ namespace MuHua {
 			return isTransition;
 		}
 		public override void StartKinesis() {
-			isEndJump = false;
 			isTransition = false;
-			isGrounded = movement.Grounded;
-			decaySpeed = movement.Speed;
 			movement.Jump(jumpHeight);
-			animator.SetTrigger("JumpStart");
+			animator.SetTrigger("Jump");
 
 			if (!isInitial) { return; }
 			movement.Settings(position, eulerAngles);
 		}
 		public override void UpdateKinesis() {
-			if (isEndJump) { return; }
-			// 衰退速度
-			decaySpeed = Mathf.Lerp(decaySpeed, 0, Time.deltaTime * 0.8f);
-			movement.Move(moveDirection, decaySpeed, acceleration, isRotation);
-			// 跳跃状态判断
-			if (isGrounded == movement.Grounded) { return; }
-			isGrounded = movement.Grounded;
-			// 起跳
-			if (!isGrounded) { return; }
-			// 落地
-			isEndJump = true;
-			animator.SetTrigger("JumpLand");
-			movement.Move(Vector2.zero, decaySpeed, acceleration, isRotation);
+			// throw new System.NotImplementedException();
 		}
 		public override void FinishKinesis() {
 			// throw new System.NotImplementedException();
@@ -92,9 +77,7 @@ namespace MuHua {
 		public override void AnimationExit() {
 			isTransition = true;
 			// 转换到移动
-			KMove kMove = new KMove(character, moveDirection, isRotation);
-			kMove.Settings(moveSpeed, acceleration);
-			character.Transition(kMove);
+			character.Transition(new KIdle());
 		}
 	}
 }

@@ -20,6 +20,7 @@ namespace MuHua {
 		public override void Update() {
 			movement.Update();
 			currentKinesis.UpdateKinesis();
+			animator.SetBool("Grounded", movement.Grounded);
 		}
 		public override bool Transition(IKinesis kinesis) {
 			// 不可以转换
