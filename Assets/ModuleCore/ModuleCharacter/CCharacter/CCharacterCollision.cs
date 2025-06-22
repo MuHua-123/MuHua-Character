@@ -28,4 +28,10 @@ public class CCharacterCollision : CCharacter {
 	public void AnimationExit() {
 		mCharacter.AnimationExit();
 	}
+	void OnDrawGizmos() {
+		float groundedRadius = hCharacter.controller.radius;
+		Vector3 position = transform.position;
+		Vector3 spherePosition = new Vector3(position.x, position.y + groundedRadius, position.z);
+		Gizmos.DrawWireSphere(spherePosition, groundedRadius + 0.05f);
+	}
 }

@@ -25,7 +25,7 @@ namespace MuHua {
 
 		public bool grounded = true;// 是否接地
 		public float verticalVelocity;// 垂直速度
-		public float groundedRadius = 0.14f;// 地面检测半径
+		public float groundedRadius = 0.2f;// 地面检测半径
 
 		/// <summary> 垂直重力 </summary>
 		public float Gravity => Physics.gravity.y;
@@ -39,6 +39,7 @@ namespace MuHua {
 		public MovementCollision(CharacterController controller, LayerMask groundLayers) {
 			this.controller = controller;
 			this.groundLayers = groundLayers;
+			groundedRadius = controller.radius; // 设置地面检测半径为控制器半径加上一个小偏移量
 		}
 
 		/// <summary> 设置位置 </summary>
@@ -99,14 +100,17 @@ namespace MuHua {
 
 			// 地面检测
 			Vector3 position = controller.transform.position;
-			Vector3 rayOrigin = new Vector3(position.x, position.y + groundedRadius, position.z);
+			// Vector3 rayOrigin = new Vector3(position.x, position.y + groundedRadius, position.z);
 			// 射线长度稍微大于检测半径
-			float rayLength = groundedRadius * 2 + 0.1f;
+			// float rayLength = groundedRadius * 2 + 0.1f;
 			// 使用射线检测地面
-			grounded = Physics.Raycast(rayOrigin, Vector3.down, rayLength, groundLayers, QueryTriggerInteraction.Ignore);
+			// grounded = Physics.Raycast(rayOrigin, Vector3.down, rayLength, groundLayers, QueryTriggerInteraction.Ignore);
 			// 可选：调试显示射线
-			Debug.DrawRay(rayOrigin, Vector3.down * rayLength, grounded ? Color.green : Color.red);
-
+			// Debug.DrawRay(rayOrigin, Vector3.down * rayLength, grounded ? Color.green : Color.red);
+			// 设置带有偏移的球体位置
+			Vector3 spherePosition = new Vector3(position.x, position.y + groundedRadius, position.z);
+			grounded = Physics.CheckSphere(spherePosition, groundedRadius + 0.05f, groundLayers, QueryTriggerInteraction.Ignore);
+			// Gizmos.DrawSphere(spherePosition, groundedRadius);
 			// 引力
 			verticalVelocity += Gravity * Time.deltaTime;
 			// 站在地面上时，限制最大下落速度

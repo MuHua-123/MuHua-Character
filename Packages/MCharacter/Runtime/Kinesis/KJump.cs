@@ -58,24 +58,32 @@ namespace MuHua {
 		}
 
 		public override bool Transition(IKinesis kinesis) {
+			// if (kinesis is KMove move) {
+			// 	moveDirection = move.moveDirection;
+			// 	moveSpeed = move.moveSpeed;
+			// 	acceleration = move.acceleration;
+			// 	if (move.isInitial) { movement.Settings(move.position, move.eulerAngles); }
+			// }
 			return isTransition;
 		}
 		public override void StartKinesis() {
 			isTransition = false;
 			movement.Jump(jumpHeight);
 			animator.SetTrigger("Jump");
+			animator.applyRootMotion = false;
 
 			if (!isInitial) { return; }
 			movement.Settings(position, eulerAngles);
 		}
 		public override void UpdateKinesis() {
-			// throw new System.NotImplementedException();
+			// movement.Move(moveDirection, moveSpeed, acceleration, isRotation);
 		}
 		public override void FinishKinesis() {
 			// throw new System.NotImplementedException();
 		}
 		public override void AnimationExit() {
 			isTransition = true;
+			animator.applyRootMotion = true;
 			// 转换到移动
 			character.Transition(new KIdle());
 		}

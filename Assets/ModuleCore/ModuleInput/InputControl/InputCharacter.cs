@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class InputCharacter : InputControl {
 
+	public bool isSprint = false;
 	public Vector2 moveInput;
 
 	public CameraController CurrentCamera => ModuleCamera.CurrentCamera;
@@ -20,13 +21,25 @@ public class InputCharacter : InputControl {
 	public void OnMove(InputValue inputValue) {
 		// 获取移动输入
 		moveInput = inputValue.Get<Vector2>();
-		Vector2 moveDirection = Utilities.TransferDirection(CurrentCamera.Forward, CurrentCamera.Right, moveInput);
-
-		ManagerCharacter.I.Move(moveDirection);
+		Movement();
+	}
+	public void OnSprint(InputValue inputValue) {
+		isSprint = !isSprint;
+		Movement();
 	}
 	public void OnJump(InputValue inputValue) {
-		Vector2 moveDirection = Utilities.TransferDirection(CurrentCamera.Forward, CurrentCamera.Right, moveInput);
-		ManagerCharacter.I.Jump(moveDirection);
+		ManagerCharacter.I.Jump(MoveDirection());
+	}
+	public void OnAttack(InputValue inputValue) {
+		ManagerCharacter.I.Attack();
 	}
 	#endregion
+
+	private void Movement() {
+		if (isSprint) { ManagerCharacter.I.Sprint(MoveDirection()); }
+		else { ManagerCharacter.I.Move(MoveDirection()); }
+	}
+	private Vector2 MoveDirection() {
+		return Utilities.TransferDirection(CurrentCamera.Forward, CurrentCamera.Right, moveInput);
+	}
 }

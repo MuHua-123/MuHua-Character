@@ -8,6 +8,9 @@ using UnityEngine;
 public class CameraFreely : CameraController {
 
 	public Camera mainCamera;
+	public Vector3 offset; // 相机与玩家的偏移量
+	[Range(0, 0.5f)]
+	public float smoothSpeed = 0.125f; // 平滑跟随速度
 
 	public override Vector3 Position {
 		get => transform.position;
@@ -36,5 +39,17 @@ public class CameraFreely : CameraController {
 
 	public override void ResetCamera() {
 		// throw new System.NotImplementedException();
+	}
+
+	private void LateUpdate() {
+		CCharacter player = ManagerCharacter.I.CurrentControl;
+
+		if (player == null) { return; }
+
+		// 计算目标位置
+		Vector3 desiredPosition = player.transform.position + offset;
+		// 平滑过渡到目标位置
+		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+		transform.position = smoothedPosition;
 	}
 }

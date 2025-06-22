@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f91c530e321cf944889983747755813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSprint: 0
   moveInput: {x: 0, y: 0}
 --- !u!114 &473909244
 MonoBehaviour:
@@ -1119,6 +1120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
+  offset: {x: 0, y: 0, z: 0}
+  smoothSpeed: 0.125
 --- !u!1 &1827929115
 GameObject:
   m_ObjectHideFlags: 0

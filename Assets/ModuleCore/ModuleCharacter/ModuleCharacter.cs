@@ -24,6 +24,18 @@ public static class ModuleCharacter {
 		return character.MCharacter.Transition(move);
 	}
 
+	public static bool Sprint(this CCharacter character, Vector2 moveDirection, bool isRotation) {
+		KMove move = new KMove(character.MCharacter, moveDirection, isRotation);
+		move.Settings(character.DCharacter.sprintSpeed, character.DCharacter.acceleration);
+		return character.MCharacter.Transition(move);
+	}
+	public static bool Sprint(this CCharacter character, Vector2 moveDirection, bool isRotation, Vector3 position, Vector3 eulerAngles) {
+		KMove move = new KMove(character.MCharacter, moveDirection, isRotation);
+		move.Settings(character.DCharacter.sprintSpeed, character.DCharacter.acceleration);
+		move.Settings(position, eulerAngles);
+		return character.MCharacter.Transition(move);
+	}
+
 	public static bool Jump(this CCharacter character, Vector2 moveDirection, bool isRotation) {
 		KJump jump = new KJump(character.MCharacter, moveDirection, character.DCharacter.jumpHeight, isRotation);
 		jump.Settings(character.DCharacter.moveSpeed, character.DCharacter.acceleration);
@@ -34,5 +46,15 @@ public static class ModuleCharacter {
 		jump.Settings(character.DCharacter.moveSpeed, character.DCharacter.acceleration);
 		jump.Settings(position, eulerAngles);
 		return character.MCharacter.Transition(jump);
+	}
+
+	public static bool Attack(this CCharacter character) {
+		KAttack attack = new KAttack(character.MCharacter);
+		return character.MCharacter.Transition(attack);
+	}
+	public static bool Attack(this CCharacter character, Vector3 position, Vector3 eulerAngles) {
+		KAttack attack = new KAttack(character.MCharacter);
+		attack.Settings(position, eulerAngles);
+		return character.MCharacter.Transition(attack);
 	}
 }

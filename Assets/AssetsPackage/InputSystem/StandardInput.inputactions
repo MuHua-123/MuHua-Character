@@ -130,6 +130,24 @@
             "id": "95fddea4-e35e-4fbd-a893-72d97aab6fb0",
             "actions": [
                 {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "f302736e-316e-403a-9355-a143700630c2",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "142018ed-fd38-4168-92ac-a613a3c6ba92",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "fc6c2025-4d9d-4e57-81bd-85733758b9e0",
@@ -139,27 +157,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "f302736e-316e-403a-9355-a143700630c2",
-                    "expectedControlType": "Vector2",
-                    "processors": "NormalizeVector2",
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "3103d6c1-6870-47be-b6c5-617c6f47d279",
+                    "expectedControlType": "Button",
+                    "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "8bd04278-2657-4fbb-8a71-bc38461877e8",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "Keyboard",
                     "id": "10befb05-3cbd-4552-9666-67971f8eefe9",
@@ -214,6 +221,39 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ad5f1c74-80d8-4d13-897e-e1b696920209",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e460a70-293b-459f-846e-78edf05aef0d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8bd04278-2657-4fbb-8a71-bc38461877e8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -32,8 +32,12 @@ public class ManagerCharacter : ModuleSingle<ManagerCharacter> {
 	#region 输入
 	/// <summary> 玩家操作：移动 </summary>
 	public void Move(Vector2 moveDirection) => handle.Move(moveDirection);
+	/// <summary> 冲刺 </summary>
+	public void Sprint(Vector2 moveDirection) => handle.Sprint(moveDirection);
 	/// <summary> 玩家操作：跳跃 </summary>
 	public void Jump(Vector2 moveDirection) => handle.Jump(moveDirection);
+	/// <summary> 玩家操作：攻击 </summary>
+	public void Attack() => handle.Attack();
 	#endregion
 }
 /// <summary>
@@ -46,8 +50,12 @@ public interface ICharacterHandle {
 	public void Create();
 	/// <summary> 移动 </summary>
 	public void Move(Vector2 moveInput);
+	/// <summary> 冲刺 </summary>
+	public void Sprint(Vector2 moveInput);
 	/// <summary> 跳跃 </summary>
 	public void Jump(Vector2 moveInput);
+	/// <summary> 攻击 </summary>
+	public void Attack();
 }
 /// <summary>
 /// 单机 - 角色处理器
@@ -67,9 +75,15 @@ public class SingleCharacterHandle : ICharacterHandle {
 		ModuleCharacter.CreateCharacter(ref control);
 	}
 	public void Move(Vector2 moveInput) {
-		baseMotionTransition = () => ModuleCharacter.Move(control, moveInput, true);
+		baseMotionTransition = () => control.Move(moveInput, true);
+	}
+	public void Sprint(Vector2 moveInput) {
+		baseMotionTransition = () => control.Sprint(moveInput, true);
 	}
 	public void Jump(Vector2 moveInput) {
-		baseMotionTransition = () => ModuleCharacter.Jump(control, moveInput, true);
+		baseMotionTransition = () => control.Jump(moveInput, true);
+	}
+	public void Attack() {
+		baseMotionTransition = () => control.Attack();
 	}
 }

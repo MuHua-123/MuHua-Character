@@ -61,7 +61,8 @@ namespace MuHua {
 			if (movement.Speed == 0) { character.Transition(new KIdle()); }
 		}
 		public override void FinishKinesis() {
-			// throw new System.NotImplementedException();
+			animator.SetFloat("MoveSpeed", 0);
+			movement.Move(Vector2.zero, moveSpeed, acceleration, isRotation);
 		}
 		public override void AnimationExit() {
 			// throw new System.NotImplementedException();
