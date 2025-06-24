@@ -57,6 +57,11 @@ namespace MuHua {
 		public override void Jump(float jumpHeight) {
 			verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * Gravity);
 		}
+		/// <summary> 停止运动 </summary>
+		public override void Stop() {
+			moveDirection = Vector2.zero;
+			currentSpeed = animationBlend = 0.0f;
+		}
 		/// <summary> 更新 </summary>
 		public override void Update() {
 			// 如果没有输入，将目标速度设置为0

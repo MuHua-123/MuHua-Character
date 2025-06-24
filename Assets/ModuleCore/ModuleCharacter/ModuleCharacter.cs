@@ -9,7 +9,7 @@ using MuHua;
 public static class ModuleCharacter {
 	/// <summary> 创建角色 </summary>
 	public static void CreateCharacter(ref CCharacter character) {
-		ModuleVisual.I.Character.UpdateVisual(ref character);
+		character = ModuleVisual.I.CCharacter.CreateVisual(null);
 	}
 
 	public static bool Move(this CCharacter character, Vector2 moveDirection, bool isRotation) {
@@ -48,12 +48,12 @@ public static class ModuleCharacter {
 		return character.MCharacter.Transition(jump);
 	}
 
-	public static bool Attack(this CCharacter character) {
-		KAttack attack = new KAttack(character.MCharacter);
+	public static bool Attack(this CCharacter character, bool isAttack) {
+		KAttack attack = new KAttack(character.MCharacter, isAttack);
 		return character.MCharacter.Transition(attack);
 	}
-	public static bool Attack(this CCharacter character, Vector3 position, Vector3 eulerAngles) {
-		KAttack attack = new KAttack(character.MCharacter);
+	public static bool Attack(this CCharacter character, bool isAttack, Vector3 position, Vector3 eulerAngles) {
+		KAttack attack = new KAttack(character.MCharacter, isAttack);
 		attack.Settings(position, eulerAngles);
 		return character.MCharacter.Transition(attack);
 	}

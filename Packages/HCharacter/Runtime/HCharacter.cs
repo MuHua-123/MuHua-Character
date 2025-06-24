@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,4 +21,13 @@ public abstract class HCharacter : MonoBehaviour {
 	public float acceleration = 15;
 	/// <summary> 跳跃高度 </summary>
 	public float jumpHeight = 2;
+	/// <summary> 动画结束 </summary>
+	public Action animationExit;
+	/// <summary> 触发动画 </summary>
+	public Action<string> animationTrigger;
+
+	/// <summary> 动画结束 </summary>
+	public virtual void AnimationExit() => animationExit?.Invoke();
+	/// <summary> 触发动画 </summary>
+	public virtual void AnimationTrigger(string id) => animationTrigger?.Invoke(id);
 }

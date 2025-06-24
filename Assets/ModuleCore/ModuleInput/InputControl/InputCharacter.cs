@@ -31,7 +31,7 @@ public class InputCharacter : InputControl {
 		ManagerCharacter.I.Jump(MoveDirection());
 	}
 	public void OnAttack(InputValue inputValue) {
-		ManagerCharacter.I.Attack();
+		ManagerCharacter.I.Attack(inputValue.isPressed);
 	}
 	#endregion
 

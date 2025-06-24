@@ -20,6 +20,8 @@ namespace MuHua {
 		public override void Update() {
 			movement.Update();
 			currentKinesis.UpdateKinesis();
+			// 更新动画器
+			animator.SetFloat("MoveSpeed", movement.Speed);
 			animator.SetBool("Grounded", movement.Grounded);
 		}
 		public override bool Transition(IKinesis kinesis) {

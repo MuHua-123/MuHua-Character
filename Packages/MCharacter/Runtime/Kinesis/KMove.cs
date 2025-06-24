@@ -55,14 +55,11 @@ namespace MuHua {
 			movement.Settings(position, eulerAngles);
 		}
 		public override void UpdateKinesis() {
-			// 更新动画器
-			animator.SetFloat("MoveSpeed", movement.Speed);
 			// 移动结束
 			if (movement.Speed == 0) { character.Transition(new KIdle()); }
 		}
 		public override void FinishKinesis() {
-			animator.SetFloat("MoveSpeed", 0);
-			movement.Move(Vector2.zero, moveSpeed, acceleration, isRotation);
+			// throw new System.NotImplementedException();
 		}
 		public override void AnimationExit() {
 			// throw new System.NotImplementedException();

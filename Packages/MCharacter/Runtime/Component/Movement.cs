@@ -19,6 +19,8 @@ namespace MuHua {
 		public abstract void Move(Vector2 moveDirection, float moveSpeed, float acceleration, bool isRotation);
 		/// <summary> 跳跃 </summary>
 		public abstract void Jump(float jumpHeight);
+		/// <summary> 停止运动 </summary>
+		public abstract void Stop();
 		/// <summary> 更新 </summary>
 		public abstract void Update();
 	}

@@ -58,12 +58,6 @@ namespace MuHua {
 		}
 
 		public override bool Transition(IKinesis kinesis) {
-			// if (kinesis is KMove move) {
-			// 	moveDirection = move.moveDirection;
-			// 	moveSpeed = move.moveSpeed;
-			// 	acceleration = move.acceleration;
-			// 	if (move.isInitial) { movement.Settings(move.position, move.eulerAngles); }
-			// }
 			return isTransition;
 		}
 		public override void StartKinesis() {

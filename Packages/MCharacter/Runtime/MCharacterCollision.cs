@@ -20,12 +20,15 @@ namespace MuHua {
 		public override void Update() {
 			movement.Update();
 			currentKinesis.UpdateKinesis();
+			// 更新动画器
+			animator.SetFloat("MoveSpeed", movement.Speed);
 			animator.SetBool("Grounded", movement.Grounded);
 		}
 		public override bool Transition(IKinesis kinesis) {
 			// 不可以转换
 			if (currentKinesis != null && !currentKinesis.Transition(kinesis)) { return false; }
 			// 进行转换
+			Debug.Log($"Transition to {kinesis.GetType().Name}");
 			currentKinesis?.FinishKinesis();
 			currentKinesis = kinesis;
 			currentKinesis?.StartKinesis();

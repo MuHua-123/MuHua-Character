@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c273632b651a0448b6b0a9213ec64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 1449266547}
+  CCharacter: {fileID: 489577140}
 --- !u!4 &27471127
 Transform:
   m_ObjectHideFlags: 0
@@ -166,6 +166,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1449266546}
+  - {fileID: 489577139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &115893342
@@ -474,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f91c530e321cf944889983747755813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSprint: 0
+  isSprint: 1
   moveInput: {x: 0, y: 0}
 --- !u!114 &473909244
 MonoBehaviour:
@@ -506,6 +507,52 @@ MonoBehaviour:
   m_DefaultActionMap: InputCharacter
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &489577138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489577139}
+  - component: {fileID: 489577140}
+  m_Layer: 0
+  m_Name: GeneratorCCharacter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &489577139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489577138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 27471127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &489577140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489577138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da92f9b566efc8f46a4806f861e4765e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: {fileID: 489577139}
+  prefab: {fileID: 5400511505129025868, guid: 90c3e729a7e2e3142a8f551c7602eca6, type: 3}
 --- !u!1 &614368376
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +1034,7 @@ GameObject:
   - component: {fileID: 1449266546}
   - component: {fileID: 1449266547}
   m_Layer: 0
-  m_Name: VisualCCharacter
+  m_Name: ControllerCCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

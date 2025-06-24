@@ -12,6 +12,8 @@ namespace MuHua {
 
 		/// <summary> 初始设置 </summary>
 		public bool isInitial = false;
+		/// <summary> 发动攻击 </summary>
+		public bool isAttack = false;
 		/// <summary> 允许转换 </summary>
 		public bool isTransition;
 		/// <summary> 初始位置 </summary>
@@ -24,8 +26,9 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public KAttack(MCharacter character) {
+		public KAttack(MCharacter character, bool isAttack) {
 			this.character = character;
+			this.isAttack = isAttack;
 		}
 
 		public void Settings(Vector3 position, Vector3 eulerAngles) {
@@ -35,14 +38,13 @@ namespace MuHua {
 		}
 
 		public override bool Transition(IKinesis kinesis) {
-			if (kinesis is KAttack attack) {
-				if (attack.isInitial) { movement.Settings(attack.position, attack.eulerAngles); }
-			}
+			if (kinesis is KAttack attack) { return true; }
 			return isTransition;
 		}
 		public override void StartKinesis() {
 			isTransition = false;
-			animator.SetBool("Attack", true);
+			movement.Stop();
+			animator.SetBool("Attack", isAttack);
 
 			if (!isInitial) { return; }
 			movement.Settings(position, eulerAngles);
@@ -55,7 +57,6 @@ namespace MuHua {
 		}
 		public override void AnimationExit() {
 			isTransition = true;
-			animator.SetBool("Attack", false);
 			// 转换到移动
 			character.Transition(new KIdle());
 		}

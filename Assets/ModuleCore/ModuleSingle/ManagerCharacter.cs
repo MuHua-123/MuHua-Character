@@ -37,7 +37,7 @@ public class ManagerCharacter : ModuleSingle<ManagerCharacter> {
 	/// <summary> 玩家操作：跳跃 </summary>
 	public void Jump(Vector2 moveDirection) => handle.Jump(moveDirection);
 	/// <summary> 玩家操作：攻击 </summary>
-	public void Attack() => handle.Attack();
+	public void Attack(bool isAttack) => handle.Attack(isAttack);
 	#endregion
 }
 /// <summary>
@@ -55,7 +55,7 @@ public interface ICharacterHandle {
 	/// <summary> 跳跃 </summary>
 	public void Jump(Vector2 moveInput);
 	/// <summary> 攻击 </summary>
-	public void Attack();
+	public void Attack(bool isAttack);
 }
 /// <summary>
 /// 单机 - 角色处理器
@@ -83,7 +83,7 @@ public class SingleCharacterHandle : ICharacterHandle {
 	public void Jump(Vector2 moveInput) {
 		baseMotionTransition = () => control.Jump(moveInput, true);
 	}
-	public void Attack() {
-		baseMotionTransition = () => control.Attack();
+	public void Attack(bool isAttack) {
+		baseMotionTransition = () => control.Attack(isAttack);
 	}
 }

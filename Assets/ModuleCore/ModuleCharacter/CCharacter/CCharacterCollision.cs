@@ -19,15 +19,14 @@ public class CCharacterCollision : CCharacter {
 		hCharacter = GetComponent<HCharacterCollision>();
 		mCharacter = new MCharacterCollision(hCharacter.animator, hCharacter.controller, hCharacter.ground);
 		mCharacter.movement.Settings(position, eulerAngles);
+		hCharacter.animationExit = mCharacter.AnimationExit;
 
 		dCharacter = new DataCharacter(hCharacter);
 	}
 	private void Update() {
 		mCharacter.Update();
 	}
-	public void AnimationExit() {
-		mCharacter.AnimationExit();
-	}
+
 	void OnDrawGizmos() {
 		float groundedRadius = hCharacter.controller.radius;
 		Vector3 position = transform.position;
