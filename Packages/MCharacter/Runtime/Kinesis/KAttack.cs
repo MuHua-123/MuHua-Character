@@ -57,6 +57,7 @@ namespace MuHua {
 		}
 		public override void AnimationExit() {
 			isTransition = true;
+			animator.SetBool("Attack", false);
 			// 转换到移动
 			character.Transition(new KIdle());
 		}

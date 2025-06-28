@@ -16,6 +16,8 @@ public class ManagerCharacter : ModuleSingle<ManagerCharacter> {
 	public ICharacterHandle handle => singleHandle;
 	/// <summary> 当前玩家控制器 </summary>
 	public CCharacter CurrentControl => handle.Control;
+	/// <summary> 完成转换 </summary>
+	public bool IsTransition => handle.IsTransition;
 
 	protected override void Awake() {
 		NoReplace(false);
@@ -46,6 +48,8 @@ public class ManagerCharacter : ModuleSingle<ManagerCharacter> {
 public interface ICharacterHandle {
 	/// <summary> 角色控制器 </summary>
 	public CCharacter Control { get; }
+	/// <summary> 完成转换 </summary>
+	public bool IsTransition { get; }
 	/// <summary> 创建 </summary>
 	public void Create();
 	/// <summary> 移动 </summary>
@@ -66,6 +70,8 @@ public class SingleCharacterHandle : ICharacterHandle {
 	public Func<bool> baseMotionTransition;
 
 	public CCharacter Control => control;
+
+	public bool IsTransition => baseMotionTransition == null;
 
 	public void Update() {
 		if (baseMotionTransition == null) { return; }

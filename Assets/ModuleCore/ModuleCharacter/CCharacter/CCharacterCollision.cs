@@ -20,11 +20,16 @@ public class CCharacterCollision : CCharacter {
 		mCharacter = new MCharacterCollision(hCharacter.animator, hCharacter.controller, hCharacter.ground);
 		mCharacter.movement.Settings(position, eulerAngles);
 		hCharacter.animationExit = mCharacter.AnimationExit;
+		hCharacter.animationTrigger = AnimationTrigger;
 
 		dCharacter = new DataCharacter(hCharacter);
 	}
 	private void Update() {
 		mCharacter.Update();
+	}
+
+	private void AnimationTrigger(string value) {
+
 	}
 
 	void OnDrawGizmos() {

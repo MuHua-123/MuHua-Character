@@ -28,7 +28,6 @@ namespace MuHua {
 			// 不可以转换
 			if (currentKinesis != null && !currentKinesis.Transition(kinesis)) { return false; }
 			// 进行转换
-			Debug.Log($"Transition to {kinesis.GetType().Name}");
 			currentKinesis?.FinishKinesis();
 			currentKinesis = kinesis;
 			currentKinesis?.StartKinesis();
