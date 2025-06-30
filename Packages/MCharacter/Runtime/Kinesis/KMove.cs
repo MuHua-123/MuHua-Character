@@ -47,6 +47,7 @@ namespace MuHua {
 		}
 
 		public override bool Transition(IKinesis kinesis) {
+			// if (kinesis is KMove move) { return move.moveDirection != moveDirection; }
 			return true;
 		}
 		public override void StartKinesis() {

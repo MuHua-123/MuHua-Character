@@ -6,7 +6,7 @@ using MuHua;
 /// <summary>
 /// 碰撞 - 角色控制器
 /// </summary>
-public class CCharacterCollision : CCharacter {
+public class CCharacterCollision : CCharacter, IAnimationEvents {
 
 	public DataCharacter dCharacter;
 	public HCharacterCollision hCharacter;
@@ -19,8 +19,7 @@ public class CCharacterCollision : CCharacter {
 		hCharacter = GetComponent<HCharacterCollision>();
 		mCharacter = new MCharacterCollision(hCharacter.animator, hCharacter.controller, hCharacter.ground);
 		mCharacter.movement.Settings(position, eulerAngles);
-		hCharacter.animationExit = mCharacter.AnimationExit;
-		hCharacter.animationTrigger = AnimationTrigger;
+		hCharacter.animationEvents = this;
 
 		dCharacter = new DataCharacter(hCharacter);
 	}
@@ -28,14 +27,22 @@ public class CCharacterCollision : CCharacter {
 		mCharacter.Update();
 	}
 
-	private void AnimationTrigger(string value) {
-
-	}
-
 	void OnDrawGizmos() {
 		float groundedRadius = hCharacter.controller.radius;
 		Vector3 position = transform.position;
 		Vector3 spherePosition = new Vector3(position.x, position.y + groundedRadius, position.z);
 		Gizmos.DrawWireSphere(spherePosition, groundedRadius + 0.05f);
+	}
+
+	public void EnterTrigger() {
+		hCharacter.weapon?.Open();
+	}
+
+	public void ExitTrigger() {
+		hCharacter.weapon?.Close();
+	}
+
+	public void AnimationExit() {
+		mCharacter.AnimationExit();
 	}
 }

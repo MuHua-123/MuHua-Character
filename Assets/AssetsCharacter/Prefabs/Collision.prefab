@@ -467,6 +467,7 @@ MonoBehaviour:
   sprintSpeed: 5
   acceleration: 15
   jumpHeight: 1.2
+  weapon: {fileID: 3155108465269639233}
   controller: {fileID: -8225073877692642559}
 --- !u!1001 &6264529218592984667
 PrefabInstance:
@@ -541,6 +542,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
+--- !u!114 &3155108465269639233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9023285440088884762, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
+  m_PrefabInstance: {fileID: 6264529218592984667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f31578c8de5e694fa44fb39c5bc444d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8152114497954486503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2869413995942106812, guid: 5676bdababfc9c144824b1050aa60674, type: 3}

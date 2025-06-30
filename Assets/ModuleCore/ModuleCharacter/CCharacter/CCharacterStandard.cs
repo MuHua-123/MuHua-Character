@@ -19,7 +19,7 @@ public class CCharacterStandard : CCharacter {
 		hCharacter = GetComponent<HCharacterStandard>();
 		mCharacter = new MCharacterStandard(hCharacter.animator, transform, hCharacter.ground);
 		mCharacter.movement.Settings(position, eulerAngles);
-		hCharacter.animationExit = mCharacter.AnimationExit;
+		// hCharacter.animationEvents = this;
 
 		dCharacter = new DataCharacter(hCharacter);
 	}
