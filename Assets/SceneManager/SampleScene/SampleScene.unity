@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   space: {fileID: 489577139}
-  prefab: {fileID: 5400511505129025868, guid: 90c3e729a7e2e3142a8f551c7602eca6, type: 3}
+  prefab: {fileID: 7558893245712564154, guid: 11af4d8cff96d824db494f8d9a8a07e9, type: 3}
 --- !u!1 &614368376
 GameObject:
   m_ObjectHideFlags: 0
