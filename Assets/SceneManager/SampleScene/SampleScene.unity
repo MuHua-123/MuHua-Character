@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameras:
-  - {fileID: 175306491}
+  - {fileID: 1596331724}
 --- !u!1 &175306486
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &175306488
 Transform:
   m_ObjectHideFlags: 0
@@ -1067,7 +1067,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 30
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -1160,7 +1160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1208199385
 Transform:
   m_ObjectHideFlags: 0
@@ -1284,7 +1284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1596331721
 Transform:
   m_ObjectHideFlags: 0

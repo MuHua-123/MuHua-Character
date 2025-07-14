@@ -7,9 +7,9 @@ using UnityEngine;
 /// </summary>
 public interface IAnimationEvents {
 	/// <summary> 进入触发器 </summary>
-	public void EnterTrigger();
+	public void EnterTrigger(string value);
 	/// <summary> 退出触发器 </summary>
-	public void ExitTrigger();
+	public void ExitTrigger(string value);
 	/// <summary> 动画结束 </summary>
-	public void AnimationExit();
+	public void AnimationExit(string value);
 }

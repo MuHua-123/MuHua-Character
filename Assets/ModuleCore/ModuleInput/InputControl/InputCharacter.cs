@@ -43,7 +43,7 @@ public class InputCharacter : InputControl {
 	public void OnAttack(InputValue inputValue) {
 		bool isAttack = inputValue.isPressed;
 		ManagerCharacter.I.Attack(isAttack);
-		if (isAttack || moveInput == Vector2.zero) { return; }
+		if (moveInput == Vector2.zero) { return; }
 		isMoveAfterAttack = true;
 	}
 	#endregion

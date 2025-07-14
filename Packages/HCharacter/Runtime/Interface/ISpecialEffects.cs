@@ -6,6 +6,8 @@ using UnityEngine;
 /// 特效
 /// </summary>
 public abstract class ISpecialEffects : MonoBehaviour {
+	/// <summary> 特效 </summary>
+	public Transform effects;
 	/// <summary> 开启 </summary>
 	public abstract void Open();
 	/// <summary> 关闭 </summary>

@@ -34,15 +34,23 @@ public class CCharacterCollision : CCharacter, IAnimationEvents {
 		Gizmos.DrawWireSphere(spherePosition, groundedRadius + 0.05f);
 	}
 
-	public void EnterTrigger() {
-		hCharacter.weapon?.Open();
+	public void EnterTrigger(string value) {
+		Transform attack = null;
+		if (value == "1") { attack = hCharacter.Attack1; }
+		if (value == "2") { attack = hCharacter.Attack2; }
+		if (value == "3") { attack = hCharacter.Attack3; }
+		if (value == "4") { attack = hCharacter.Attack4; }
+		if (attack == null) { return; }
+		Transform temp = Instantiate(hCharacter.weapon.effects);
+		temp.position = attack.position;
+		temp.eulerAngles = attack.eulerAngles;
 	}
 
-	public void ExitTrigger() {
-		hCharacter.weapon?.Close();
+	public void ExitTrigger(string value) {
+		// hCharacter.weapon?.Close();
 	}
 
-	public void AnimationExit() {
+	public void AnimationExit(string value) {
 		mCharacter.AnimationExit();
 	}
 }

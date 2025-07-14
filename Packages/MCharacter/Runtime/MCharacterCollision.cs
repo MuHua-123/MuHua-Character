@@ -25,9 +25,11 @@ namespace MuHua {
 			animator.SetBool("Grounded", movement.Grounded);
 		}
 		public override bool Transition(IKinesis kinesis) {
+			Debug.Log($"{currentKinesis} , {kinesis}");
 			// 不可以转换
 			if (currentKinesis != null && !currentKinesis.Transition(kinesis)) { return false; }
 			// 进行转换
+			Debug.Log(kinesis);
 			currentKinesis?.FinishKinesis();
 			currentKinesis = kinesis;
 			currentKinesis?.StartKinesis();

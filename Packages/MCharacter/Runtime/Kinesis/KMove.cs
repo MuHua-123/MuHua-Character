@@ -51,6 +51,7 @@ namespace MuHua {
 			return true;
 		}
 		public override void StartKinesis() {
+			animator.applyRootMotion = false;
 			movement.Move(moveDirection, moveSpeed, acceleration, isRotation);
 			if (!isInitial) { return; }
 			movement.Settings(position, eulerAngles);
@@ -60,7 +61,7 @@ namespace MuHua {
 			if (movement.Speed == 0) { character.Transition(new KIdle()); }
 		}
 		public override void FinishKinesis() {
-			// throw new System.NotImplementedException();
+			animator.applyRootMotion = true;
 		}
 		public override void AnimationExit() {
 			// throw new System.NotImplementedException();

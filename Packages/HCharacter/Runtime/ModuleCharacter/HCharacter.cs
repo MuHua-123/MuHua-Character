@@ -21,16 +21,13 @@ public abstract class HCharacter : MonoBehaviour {
 	public float acceleration = 15;
 	/// <summary> 跳跃高度 </summary>
 	public float jumpHeight = 2;
-	[Header("特效属性")]
-	/// <summary> 武器特效 </summary>
-	public ISpecialEffects weapon;
 
-	/// <summary> 动画结束 </summary>
+	/// <summary> 动画事件 </summary>
 	public IAnimationEvents animationEvents;
+	/// <summary> 动画进入触发 </summary>
+	public virtual void EnterTrigger(string value) => animationEvents?.ExitTrigger(value);
+	/// <summary> 动画退出触发 </summary>
+	public virtual void ExitTrigger(string value) => animationEvents?.ExitTrigger(value);
 	/// <summary> 动画结束 </summary>
-	public virtual void EnterTrigger() => animationEvents?.ExitTrigger();
-	/// <summary> 动画结束 </summary>
-	public virtual void ExitTrigger() => animationEvents?.ExitTrigger();
-	/// <summary> 动画结束 </summary>
-	public virtual void AnimationExit() => animationEvents?.AnimationExit();
+	public virtual void AnimationExit(string value) => animationEvents?.AnimationExit(value);
 }
