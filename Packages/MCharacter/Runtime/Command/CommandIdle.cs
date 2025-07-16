@@ -6,8 +6,8 @@ namespace MuHua {
 	/// <summary>
 	/// 空闲 - 运动
 	/// </summary>
-	public class KIdle : IKinesis {
-		public override bool Transition(IKinesis kinesis) {
+	public class CommandIdle : Command {
+		public override bool Transition(Command kinesis) {
 			return true;
 		}
 		public override void StartKinesis() {

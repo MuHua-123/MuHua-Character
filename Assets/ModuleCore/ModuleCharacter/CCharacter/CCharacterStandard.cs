@@ -9,15 +9,19 @@ using MuHua;
 public class CCharacterStandard : CCharacter {
 
 	public DataCharacter dCharacter;
+	public MCharacter mCharacter;
 	public HCharacterStandard hCharacter;
-	public MCharacterStandard mCharacter;
+	public MovementStandard movement;
 
 	public override MCharacter MCharacter => mCharacter;
 	public override DataCharacter DCharacter => dCharacter;
 
 	public override void Initial(Vector3 position, Vector3 eulerAngles) {
 		hCharacter = GetComponent<HCharacterStandard>();
-		mCharacter = new MCharacterStandard(hCharacter.animator, transform, hCharacter.ground);
+		// 创建运动器
+		movement = new MovementStandard(transform, hCharacter.ground);
+		// 创建角色模型
+		mCharacter = new MCharacter(hCharacter.animator, movement);
 		mCharacter.movement.Settings(position, eulerAngles);
 		// hCharacter.animationEvents = this;
 

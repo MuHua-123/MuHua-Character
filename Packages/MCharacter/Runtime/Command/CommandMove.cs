@@ -6,7 +6,7 @@ namespace MuHua {
 	/// <summary>
 	/// 移动 - 运动
 	/// </summary>
-	public class KMove : IKinesis {
+	public class CommandMove : Command {
 		/// <summary> 基础角色 </summary>
 		public readonly MCharacter character;
 
@@ -30,7 +30,7 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public KMove(MCharacter character, Vector2 moveDirection, bool isRotation) {
+		public CommandMove(MCharacter character, Vector2 moveDirection, bool isRotation) {
 			this.character = character;
 			this.moveDirection = moveDirection;
 			this.isRotation = isRotation;
@@ -46,7 +46,7 @@ namespace MuHua {
 			isInitial = true;
 		}
 
-		public override bool Transition(IKinesis kinesis) {
+		public override bool Transition(Command kinesis) {
 			// if (kinesis is KMove move) { return move.moveDirection != moveDirection; }
 			return true;
 		}
@@ -58,7 +58,7 @@ namespace MuHua {
 		}
 		public override void UpdateKinesis() {
 			// 移动结束
-			if (movement.Speed == 0) { character.Transition(new KIdle()); }
+			if (movement.Speed == 0) { character.Transition(new CommandIdle()); }
 		}
 		public override void FinishKinesis() {
 			animator.applyRootMotion = true;

@@ -6,9 +6,9 @@ namespace MuHua {
 	/// <summary>
 	/// 运动
 	/// </summary>
-	public abstract class IKinesis {
+	public abstract class Command {
 		/// <summary> 动作过渡 </summary>
-		public abstract bool Transition(IKinesis kinesis);
+		public abstract bool Transition(Command kinesis);
 		/// <summary> 开始动作 </summary>
 		public abstract void StartKinesis();
 		/// <summary> 更新动作 </summary>

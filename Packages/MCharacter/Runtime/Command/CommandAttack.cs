@@ -6,7 +6,7 @@ namespace MuHua {
 	/// <summary>
 	/// 攻击 - 运动
 	/// </summary>
-	public class KAttack : IKinesis {
+	public class CommandAttack : Command {
 		/// <summary> 基础角色 </summary>
 		public readonly MCharacter character;
 
@@ -26,7 +26,7 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public KAttack(MCharacter character, bool isAttack) {
+		public CommandAttack(MCharacter character, bool isAttack) {
 			this.character = character;
 			this.isAttack = isAttack;
 		}
@@ -37,8 +37,8 @@ namespace MuHua {
 			isInitial = true;
 		}
 
-		public override bool Transition(IKinesis kinesis) {
-			if (kinesis is KAttack attack) { return true; }
+		public override bool Transition(Command kinesis) {
+			if (kinesis is CommandAttack attack) { return true; }
 			return isTransition;
 		}
 		public override void StartKinesis() {
@@ -59,7 +59,7 @@ namespace MuHua {
 			isTransition = true;
 			animator.SetBool("Attack", false);
 			// 转换到空闲
-			character.Transition(new KIdle());
+			character.Transition(new CommandIdle());
 		}
 	}
 }

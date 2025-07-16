@@ -6,21 +6,26 @@ using MuHua;
 /// <summary>
 /// 碰撞 - 角色控制器
 /// </summary>
-public class CCharacterCollision : CCharacter, IAnimationEvents {
+public class CCharacterCollision : CCharacter, ICharacterFunc {
 
 	public DataCharacter dCharacter;
+	public MCharacter mCharacter;
 	public HCharacterCollision hCharacter;
-	public MCharacterCollision mCharacter;
+	public MovementCollision movement;
 
 	public override MCharacter MCharacter => mCharacter;
 	public override DataCharacter DCharacter => dCharacter;
 
 	public override void Initial(Vector3 position, Vector3 eulerAngles) {
 		hCharacter = GetComponent<HCharacterCollision>();
-		mCharacter = new MCharacterCollision(hCharacter.animator, hCharacter.controller, hCharacter.ground);
+		// 创建运动器
+		movement = new MovementCollision(hCharacter.controller, hCharacter.ground);
+		// 创建角色模型
+		mCharacter = new MCharacter(hCharacter.animator, movement);
 		mCharacter.movement.Settings(position, eulerAngles);
-		hCharacter.animationEvents = this;
-
+		// 载入功能
+		hCharacter.func = this;
+		// 载入数据
 		dCharacter = new DataCharacter(hCharacter);
 	}
 	private void Update() {
@@ -51,6 +56,10 @@ public class CCharacterCollision : CCharacter, IAnimationEvents {
 	}
 
 	public void AnimationExit(string value) {
-		mCharacter.AnimationExit();
+		// mCharacter.AnimationExit();
+	}
+
+	public void SettingsState(bool isTransition, bool isFloating, bool isInjured) {
+		// throw new System.NotImplementedException();
 	}
 }

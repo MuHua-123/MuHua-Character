@@ -6,14 +6,10 @@ namespace MuHua {
 	/// <summary>
 	/// 跳跃 - 运动
 	/// </summary>
-	public class KJump : IKinesis {
+	public class CommandJump : Command {
 		/// <summary> 基础角色 </summary>
 		public readonly MCharacter character;
 
-		/// <summary> 结束跳跃 </summary>
-		// public bool isEndJump;
-		/// <summary> 是否接地 </summary>
-		// public bool isGrounded;
 		/// <summary> 允许转换 </summary>
 		public bool isTransition;
 		/// <summary> 跳跃高度 </summary>
@@ -40,7 +36,7 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public KJump(MCharacter character, Vector2 moveDirection, float jumpHeight, bool isRotation) {
+		public CommandJump(MCharacter character, Vector2 moveDirection, float jumpHeight, bool isRotation) {
 			this.character = character;
 			this.moveDirection = moveDirection;
 			this.jumpHeight = jumpHeight;
@@ -57,7 +53,7 @@ namespace MuHua {
 			isInitial = true;
 		}
 
-		public override bool Transition(IKinesis kinesis) {
+		public override bool Transition(Command kinesis) {
 			return isTransition;
 		}
 		public override void StartKinesis() {
@@ -79,7 +75,7 @@ namespace MuHua {
 			isTransition = true;
 			animator.applyRootMotion = true;
 			// 转换到移动
-			character.Transition(new KIdle());
+			character.Transition(new CommandIdle());
 		}
 	}
 }
