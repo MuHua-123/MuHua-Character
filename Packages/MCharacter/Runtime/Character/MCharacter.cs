@@ -14,9 +14,13 @@ namespace MuHua {
 		/// <summary> 当前指令 </summary>
 		public Command currentCommand;
 
+		/// <summary> 是否允许转换 </summary>
+		public bool isTransition = true;
+
 		public MCharacter(Animator animator, Movement movement) {
 			this.animator = animator;
 			this.movement = movement;
+			currentCommand = new CommandIdle();
 		}
 
 		/// <summary> 更新 </summary>
@@ -32,7 +36,8 @@ namespace MuHua {
 		/// <summary> 动作过渡 </summary>
 		public bool Transition(Command command) {
 			// 不可以转换
-			if (currentCommand != null && !currentCommand.Transition(command)) { return false; }
+			currentCommand.Transition(command);
+			if (!isTransition) { return false; }
 			// 进行转换
 			currentCommand?.FinishKinesis();
 			currentCommand = command;

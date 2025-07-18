@@ -38,7 +38,10 @@ namespace MuHua {
 		}
 
 		public override bool Transition(Command kinesis) {
-			if (kinesis is CommandAttack attack) { return true; }
+			if (kinesis is CommandAttack attack) {
+				animator.SetBool("Attack", attack.isAttack);
+				return true;
+			}
 			return isTransition;
 		}
 		public override void StartKinesis() {

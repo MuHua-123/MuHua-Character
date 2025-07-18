@@ -24,12 +24,10 @@ public abstract class HCharacter : MonoBehaviour {
 
 	/// <summary> 动画事件 </summary>
 	public ICharacterFunc func;
-	/// <summary> 动画进入触发 </summary>
-	public virtual void EnterTrigger(string value) => func?.ExitTrigger(value);
-	/// <summary> 动画退出触发 </summary>
-	public virtual void ExitTrigger(string value) => func?.ExitTrigger(value);
-	/// <summary> 动画结束 </summary>
-	public virtual void AnimationExit(string value) => func?.AnimationExit(value);
+	/// <summary> 动画触发 </summary>
+	public virtual void Trigger(string value) {
+		func?.Trigger(value);
+	}
 	/// <summary> 设置状态 </summary>
 	public void SettingsState(bool isTransition, bool isFloating, bool isInjured) {
 		func?.SettingsState(isTransition, isFloating, isInjured);
@@ -39,12 +37,8 @@ public abstract class HCharacter : MonoBehaviour {
 /// 动画事件接口
 /// </summary>
 public interface ICharacterFunc {
-	/// <summary> 进入触发器 </summary>
-	public void EnterTrigger(string value);
-	/// <summary> 退出触发器 </summary>
-	public void ExitTrigger(string value);
-	/// <summary> 动画结束 </summary>
-	public void AnimationExit(string value);
+	/// <summary> 触发 </summary>
+	public void Trigger(string value);
 	/// <summary> 设置状态 </summary>
 	public void SettingsState(bool isTransition, bool isFloating, bool isInjured);
 }

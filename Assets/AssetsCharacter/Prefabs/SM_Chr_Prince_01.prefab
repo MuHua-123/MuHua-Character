@@ -136,13 +136,8 @@ MonoBehaviour:
   acceleration: 15
   jumpHeight: 1.2
   controller: {fileID: 5185615929797186397}
-  weapon: {fileID: 2802050107148441349}
-  Attack1: {fileID: 8400233891869264982}
-  Attack2: {fileID: 1280112673293219182}
-  Attack3: {fileID: 2576884436897137829}
-  Attack4: {fileID: 8965837057152856117}
-  Attack5: {fileID: 0}
-  Attack6: {fileID: 0}
+  combo: {fileID: 7334664035334262323}
+  weapon: {fileID: 8574204087398174818}
 --- !u!1 &550567649948976928
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4227809951609014081}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WeaponComponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1985,8 +1980,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8328515558388444621}
+  - component: {fileID: 7334664035334262323}
   m_Layer: 0
-  m_Name: Effects
+  m_Name: ComboComponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2011,6 +2007,23 @@ Transform:
   - {fileID: 8965837057152856117}
   m_Father: {fileID: 7558893245712564154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7334664035334262323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829475867650642966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fe59a24a57158498a21baa51400c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combos:
+  - {fileID: 8400233891869264982}
+  - {fileID: 1280112673293219182}
+  - {fileID: 2576884436897137829}
+  - {fileID: 8965837057152856117}
 --- !u!1 &8890291124014434095
 GameObject:
   m_ObjectHideFlags: 0
@@ -2358,22 +2371,34 @@ PrefabInstance:
       propertyPath: effects
       value: 
       objectReference: {fileID: 1743412021257025470, guid: c258b15b94ddbd948968d0853164edc5, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9023285440088884762, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3213851043470871558, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8574204087398174818}
   m_SourcePrefab: {fileID: 100100000, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
---- !u!114 &2802050107148441349 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9023285440088884762, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
+--- !u!1 &8593470114908069145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3213851043470871558, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
   m_PrefabInstance: {fileID: 6619103932903739679}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
+--- !u!114 &8574204087398174818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593470114908069145}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f31578c8de5e694fa44fb39c5bc444d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c1d56c03a4cd0e48921f647f8d63ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effects: {fileID: -5070505151390022651, guid: c258b15b94ddbd948968d0853164edc5, type: 3}
+  HitEffect: {fileID: -7925194550522898763, guid: ce5e7abcffa309b44b9b58d64153d78b, type: 3}
 --- !u!4 &8937942282338273187 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2869413995942106812, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
