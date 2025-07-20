@@ -10,6 +10,9 @@ namespace MuHua {
 		public override bool Transition(Command kinesis) {
 			return true;
 		}
+		public override void Settings(string token) {
+			// throw new System.NotImplementedException();
+		}
 		public override void StartKinesis() {
 			// throw new System.NotImplementedException();
 		}

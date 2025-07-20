@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 连击组件
 /// </summary>
-public class ComboComponent : MonoBehaviour {
+public class HCombo : MonoBehaviour {
 	/// <summary> 连击 </summary>
 	public List<Transform> combos;
 

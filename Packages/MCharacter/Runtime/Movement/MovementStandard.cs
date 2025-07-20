@@ -31,9 +31,9 @@ namespace MuHua {
 		public float Gravity => Physics.gravity.y;
 
 		public override float Speed => currentSpeed;
-
+		public override float MoveSpeed => moveSpeed;
+		public override float Acceleration => acceleration;
 		public override bool Grounded => grounded;
-
 		public override Vector3 Position => transform.position;
 
 		public MovementStandard(Transform transform, LayerMask groundLayers) {
@@ -47,11 +47,15 @@ namespace MuHua {
 			transform.eulerAngles = eulerAngles;
 		}
 		/// <summary> 移动 </summary>
-		public override void Move(Vector2 moveDirection, float moveSpeed, float acceleration, bool isRotation) {
-			this.moveSpeed = moveSpeed;
-			this.acceleration = acceleration;
+		public override void Move(Vector2 moveDirection, bool isRotation) {
 			this.moveDirection = moveDirection;
 			this.isRotation = isRotation;
+		}
+		/// <summary> 移动 </summary>
+		public override void Move(Vector2 moveDirection, float moveSpeed, float acceleration, bool isRotation) {
+			Move(moveDirection, isRotation);
+			this.moveSpeed = moveSpeed;
+			this.acceleration = acceleration;
 		}
 		/// <summary> 跳跃 </summary>
 		public override void Jump(float jumpHeight) {

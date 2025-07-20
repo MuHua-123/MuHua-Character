@@ -10,72 +10,52 @@ namespace MuHua {
 		/// <summary> 基础角色 </summary>
 		public readonly MCharacter character;
 
-		/// <summary> 允许转换 </summary>
-		public bool isTransition;
 		/// <summary> 跳跃高度 </summary>
 		public float jumpHeight;
-		/// <summary> 衰退速度 </summary>
-		public float decaySpeed;
-		/// <summary> 移动速度 </summary>
-		public float moveSpeed = 2;
-		/// <summary> 加速度 </summary>
-		public float acceleration = 15;
-		/// <summary> 移动方向 </summary>
-		public Vector2 moveDirection;
-		/// <summary> 初始位置 </summary>
-		public Vector3 position;
-		/// <summary> 初始角度 </summary>
-		public Vector3 eulerAngles;
-		/// <summary> 是否旋转 </summary>
-		public bool isRotation;
-		/// <summary> 初始设置 </summary>
-		public bool isInitial = false;
+		/// <summary> 跳跃令牌 </summary>
+		public bool isJumpToken = false;
+		/// <summary> 落地令牌 </summary>
+		public bool isLandToken = false;
+
+		/// <summary> 是否允许转换 </summary>
+		public bool IsTransition => character.isTransition;
 
 		/// <summary> 动画器 </summary>
 		public Animator animator => character.animator;
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public CommandJump(MCharacter character, Vector2 moveDirection, float jumpHeight, bool isRotation) {
+		public CommandJump(MCharacter character, float jumpHeight) {
 			this.character = character;
-			this.moveDirection = moveDirection;
 			this.jumpHeight = jumpHeight;
-			this.isRotation = isRotation;
 		}
 
-		public void Settings(float moveSpeed, float acceleration) {
-			this.moveSpeed = moveSpeed;
-			this.acceleration = acceleration;
+		public override bool Transition(Command command) {
+			// 如果跳跃移动
+			if (command is CommandMove move) { return isJumpToken; }
+			return isJumpToken && isLandToken && IsTransition;
 		}
-		public void Settings(Vector3 position, Vector3 eulerAngles) {
-			this.position = position;
-			this.eulerAngles = eulerAngles;
-			isInitial = true;
-		}
-
-		public override bool Transition(Command kinesis) {
-			return isTransition;
+		public override void Settings(string token) {
+			// 激活跳跃令牌
+			if (!isJumpToken) { isJumpToken = token == "Jump"; }
+			// 激活落地令牌
+			if (!isLandToken) { isLandToken = token == "Land"; }
+			if (isLandToken) { movement.Stop(); }
 		}
 		public override void StartKinesis() {
-			isTransition = false;
-			movement.Jump(jumpHeight);
 			animator.SetTrigger("Jump");
 			animator.applyRootMotion = false;
-
-			if (!isInitial) { return; }
-			movement.Settings(position, eulerAngles);
+			movement.Jump(jumpHeight);
 		}
 		public override void UpdateKinesis() {
-			// movement.Move(moveDirection, moveSpeed, acceleration, isRotation);
+			if (!isJumpToken || !isLandToken || !IsTransition) { return; }
+			character.Transition(new CommandIdle());
 		}
 		public override void FinishKinesis() {
-			// throw new System.NotImplementedException();
+			animator.applyRootMotion = true;
 		}
 		public override void AnimationExit() {
-			isTransition = true;
-			animator.applyRootMotion = true;
-			// 转换到移动
-			character.Transition(new CommandIdle());
+			// throw new System.NotImplementedException();
 		}
 	}
 }

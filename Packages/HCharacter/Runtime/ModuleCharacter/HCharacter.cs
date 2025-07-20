@@ -25,13 +25,7 @@ public abstract class HCharacter : MonoBehaviour {
 	/// <summary> 动画事件 </summary>
 	public ICharacterFunc func;
 	/// <summary> 动画触发 </summary>
-	public virtual void Trigger(string value) {
-		func?.Trigger(value);
-	}
-	/// <summary> 设置状态 </summary>
-	public void SettingsState(bool isTransition, bool isFloating, bool isInjured) {
-		func?.SettingsState(isTransition, isFloating, isInjured);
-	}
+	public virtual void Trigger(string value) => func?.Trigger(value);
 }
 /// <summary>
 /// 动画事件接口
@@ -40,5 +34,5 @@ public interface ICharacterFunc {
 	/// <summary> 触发 </summary>
 	public void Trigger(string value);
 	/// <summary> 设置状态 </summary>
-	public void SettingsState(bool isTransition, bool isFloating, bool isInjured);
+	public void SettingsState(string token, bool isTransition, bool isFloating, bool isInjured);
 }

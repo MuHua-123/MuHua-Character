@@ -32,7 +32,7 @@ using UnityEngine;
 using UnityEditor;
 
 namespace Tiny {
-	[CustomEditor(typeof(EffectsTrail), true)]
+	[CustomEditor(typeof(HEffectsTrail), true)]
 	public class EffectsTrailEditor : Editor {
 		public enum Edition {
 			None,
@@ -69,7 +69,7 @@ namespace Tiny {
 
 		Vector3[] points = new Vector3[0];
 
-		EffectsTrail trail = null;
+		HEffectsTrail trail = null;
 		Transform tm = null;
 
 		private void OnSceneGUI() {
@@ -84,7 +84,7 @@ namespace Tiny {
 		}
 
 		private void OnEnable() {
-			trail = (EffectsTrail)target;
+			trail = (HEffectsTrail)target;
 			tm = trail.transform;
 		}
 
@@ -212,7 +212,7 @@ namespace Tiny {
 			if (count < 2)
 				return;
 
-			EffectsTrail trail = (EffectsTrail)target;
+			HEffectsTrail trail = (HEffectsTrail)target;
 
 			Vector3 vector = normal == 1 ? new Vector3(radius, 0f, 0f) : new Vector3(0f, 0f, radius);
 

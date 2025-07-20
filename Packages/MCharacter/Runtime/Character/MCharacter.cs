@@ -16,6 +16,10 @@ namespace MuHua {
 
 		/// <summary> 是否允许转换 </summary>
 		public bool isTransition = true;
+		/// <summary> 是否浮空 </summary>
+		public bool isFloating = true;
+		/// <summary> 是否受击 </summary>
+		public bool isInjured = true;
 
 		public MCharacter(Animator animator, Movement movement) {
 			this.animator = animator;
@@ -35,14 +39,21 @@ namespace MuHua {
 		}
 		/// <summary> 动作过渡 </summary>
 		public bool Transition(Command command) {
-			// 不可以转换
-			currentCommand.Transition(command);
-			if (!isTransition) { return false; }
+			// 转换检测
+			bool? transition = currentCommand?.Transition(command);
+			if (!(bool)transition) { return false; }
 			// 进行转换
 			currentCommand?.FinishKinesis();
 			currentCommand = command;
 			currentCommand?.StartKinesis();
 			return true;
+		}
+		/// <summary> 设置状态 </summary>
+		public void SettingsState(string token, bool isTransition, bool isFloating, bool isInjured) {
+			currentCommand?.Settings(token);
+			this.isTransition = isTransition;
+			this.isFloating = isFloating;
+			this.isInjured = isInjured;
 		}
 	}
 }

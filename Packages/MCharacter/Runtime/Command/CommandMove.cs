@@ -16,14 +16,11 @@ namespace MuHua {
 		public float acceleration = 15;
 		/// <summary> 移动方向 </summary>
 		public Vector2 moveDirection;
-		/// <summary> 初始位置 </summary>
-		public Vector3 position;
-		/// <summary> 初始角度 </summary>
-		public Vector3 eulerAngles;
 		/// <summary> 是否旋转 </summary>
 		public bool isRotation;
-		/// <summary> 初始设置 </summary>
-		public bool isInitial = false;
+
+		/// <summary> 是否允许转换 </summary>
+		public bool IsFloating => character.isFloating;
 
 		/// <summary> 动画器 </summary>
 		public Animator animator => character.animator;
@@ -34,27 +31,27 @@ namespace MuHua {
 			this.character = character;
 			this.moveDirection = moveDirection;
 			this.isRotation = isRotation;
+			moveSpeed = movement.MoveSpeed;
+			acceleration = movement.Acceleration;
 		}
 
 		public void Settings(float moveSpeed, float acceleration) {
 			this.moveSpeed = moveSpeed;
 			this.acceleration = acceleration;
 		}
-		public void Settings(Vector3 position, Vector3 eulerAngles) {
-			this.position = position;
-			this.eulerAngles = eulerAngles;
-			isInitial = true;
-		}
 
-		public override bool Transition(Command kinesis) {
-			// if (kinesis is KMove move) { return move.moveDirection != moveDirection; }
-			return true;
+		public override bool Transition(Command command) {
+			// 如果是移动，则可以转换
+			if (command is CommandMove move) { return true; }
+			// 浮空状态不可以转换
+			return !IsFloating;
+		}
+		public override void Settings(string token) {
+			// throw new System.NotImplementedException();
 		}
 		public override void StartKinesis() {
 			animator.applyRootMotion = false;
 			movement.Move(moveDirection, moveSpeed, acceleration, isRotation);
-			if (!isInitial) { return; }
-			movement.Settings(position, eulerAngles);
 		}
 		public override void UpdateKinesis() {
 			// 移动结束

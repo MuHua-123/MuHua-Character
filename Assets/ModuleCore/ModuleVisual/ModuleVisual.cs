@@ -8,12 +8,15 @@ using MuHua;
 /// </summary>
 public class ModuleVisual : ModuleSingle<ModuleVisual> {
 
+	[Header("控制器")]
 	/// <summary> 角色生成器 </summary>
-	public VisualGenerator<CCharacter> CCharacter;
-	/// <summary> 子弹生成器 </summary>
-	// public VisualGenerator<HCharacter> HCharacter;
-	/// <summary> 怪物生成器 </summary>
-	// public VisualGenerator<HMonster> HMonster;
+	public VisualController<CCharacter> ControllerCCharacter;
+
+	[Header("生成器")]
+	/// <summary> 角色生成器 </summary>
+	public VisualGenerator<CCharacter> GeneratorCCharacter;
+	/// <summary> 特效生成器 </summary>
+	public VisualGenerator<HEffects> HEffects;
 
 	protected override void Awake() => NoReplace();
 

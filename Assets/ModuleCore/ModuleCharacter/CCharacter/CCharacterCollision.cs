@@ -32,7 +32,8 @@ public class CCharacterCollision : CCharacter, ICharacterFunc {
 		mCharacter.Update();
 	}
 
-	void OnDrawGizmos() {
+	// 绘制地面检测
+	private void OnDrawGizmos() {
 		float groundedRadius = hCharacter.controller.radius;
 		Vector3 position = transform.position;
 		Vector3 spherePosition = new Vector3(position.x, position.y + groundedRadius, position.z);
@@ -42,11 +43,10 @@ public class CCharacterCollision : CCharacter, ICharacterFunc {
 	public void Trigger(string value) {
 		Transform combo = hCharacter.combo.Get(value);
 		if (combo == null) { return; }
-		// Transform temp = Instantiate(hCharacter.weapon.effects);
-		// temp.position = attack.position;
-		// temp.eulerAngles = attack.eulerAngles;
+		Transform prefab = hCharacter.weapon.effects.transform;
+		ModuleVisual.I.HEffects.CreateVisual(prefab).Settings(combo);
 	}
-	public void SettingsState(bool isTransition, bool isFloating, bool isInjured) {
-		mCharacter.isTransition = isTransition;
+	public void SettingsState(string token, bool isTransition, bool isFloating, bool isInjured) {
+		mCharacter.SettingsState(token, isTransition, isFloating, isInjured);
 	}
 }

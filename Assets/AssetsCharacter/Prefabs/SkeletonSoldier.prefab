@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 3743365998495557742}
   - component: {fileID: 4871345010809252157}
   m_Layer: 0
-  m_Name: Character_Skeleton_Soldier_02
+  m_Name: SkeletonSoldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,8 +233,9 @@ MonoBehaviour:
   sprintSpeed: 5
   acceleration: 15
   jumpHeight: 1.2
-  weapon: {fileID: 4607610704816778174}
   controller: {fileID: 3743365998495557742}
+  combo: {fileID: 0}
+  weapon: {fileID: 0}
 --- !u!1 &552229328410326046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4923,17 +4924,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
---- !u!114 &4607610704816778174 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9023285440088884762, guid: 5676bdababfc9c144824b1050aa60674, type: 3}
-  m_PrefabInstance: {fileID: 4812276293994802596}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f31578c8de5e694fa44fb39c5bc444d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7285301482687970072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2869413995942106812, guid: 5676bdababfc9c144824b1050aa60674, type: 3}

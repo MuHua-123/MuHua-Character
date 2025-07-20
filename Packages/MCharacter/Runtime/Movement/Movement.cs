@@ -9,12 +9,19 @@ namespace MuHua {
 	public abstract class Movement {
 		/// <summary> 当前速度 </summary>
 		public abstract float Speed { get; }
+		/// <summary> 移动速度 </summary>
+		public abstract float MoveSpeed { get; }
+		/// <summary> 加速度 </summary>
+		public abstract float Acceleration { get; }
 		/// <summary> 是否接地 </summary>
 		public abstract bool Grounded { get; }
 		/// <summary> 当前位置 </summary>
 		public abstract Vector3 Position { get; }
+
 		/// <summary> 设置位置 </summary>
 		public abstract void Settings(Vector3 position, Vector3 eulerAngles);
+		/// <summary> 移动 </summary>
+		public abstract void Move(Vector2 moveDirection, bool isRotation);
 		/// <summary> 移动 </summary>
 		public abstract void Move(Vector2 moveDirection, float moveSpeed, float acceleration, bool isRotation);
 		/// <summary> 跳跃 </summary>

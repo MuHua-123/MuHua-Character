@@ -10,16 +10,13 @@ namespace MuHua {
 		/// <summary> 基础角色 </summary>
 		public readonly MCharacter character;
 
-		/// <summary> 初始设置 </summary>
-		public bool isInitial = false;
 		/// <summary> 发动攻击 </summary>
 		public bool isAttack = false;
-		/// <summary> 允许转换 </summary>
-		public bool isTransition;
-		/// <summary> 初始位置 </summary>
-		public Vector3 position;
-		/// <summary> 初始角度 </summary>
-		public Vector3 eulerAngles;
+		/// <summary> 开始令牌 </summary>
+		public bool isAttackToken = false;
+
+		/// <summary> 是否允许转换 </summary>
+		public bool IsTransition => character.isTransition;
 
 		/// <summary> 动画器 </summary>
 		public Animator animator => character.animator;
@@ -31,26 +28,22 @@ namespace MuHua {
 			this.isAttack = isAttack;
 		}
 
-		public void Settings(Vector3 position, Vector3 eulerAngles) {
-			this.position = position;
-			this.eulerAngles = eulerAngles;
-			isInitial = true;
-		}
-
 		public override bool Transition(Command kinesis) {
-			if (kinesis is CommandAttack attack) {
-				animator.SetBool("Attack", attack.isAttack);
-				return true;
-			}
-			return isTransition;
+			// 如果 取消攻击 则需要结束攻击动画才能再次攻击
+			if (!isAttack) { return isAttackToken && IsTransition; }
+			// 如果连击中，则更新攻击命令
+			if (kinesis is CommandAttack attack) { return true; }
+			// 需要进入攻击动画 激活开始令牌 才能进行转换
+			return isAttackToken && IsTransition;
+		}
+		public override void Settings(string token) {
+			// 激活攻击令牌
+			if (!isAttackToken) { isAttackToken = token == "Attack"; }
 		}
 		public override void StartKinesis() {
-			isTransition = false;
-			movement.Stop();
+			isAttackToken = !isAttack;
 			animator.SetBool("Attack", isAttack);
-
-			if (!isInitial) { return; }
-			movement.Settings(position, eulerAngles);
+			if (isAttack) { movement.Stop(); }
 		}
 		public override void UpdateKinesis() {
 			// throw new System.NotImplementedException();
@@ -59,10 +52,7 @@ namespace MuHua {
 			// throw new System.NotImplementedException();
 		}
 		public override void AnimationExit() {
-			isTransition = true;
-			animator.SetBool("Attack", false);
-			// 转换到空闲
-			character.Transition(new CommandIdle());
+			// throw new System.NotImplementedException();
 		}
 	}
 }

@@ -31,6 +31,9 @@ namespace MuHua {
 		public override bool Transition(Command kinesis) {
 			throw new System.NotImplementedException();
 		}
+		public override void Settings(string token) {
+			throw new System.NotImplementedException();
+		}
 		public override void StartKinesis() {
 			original = animator.applyRootMotion;
 			animator.SetTrigger(value);

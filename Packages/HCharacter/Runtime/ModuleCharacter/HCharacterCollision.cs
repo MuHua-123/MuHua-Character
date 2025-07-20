@@ -11,7 +11,7 @@ public class HCharacterCollision : HCharacter {
 
 	[Header("特效属性")]
 	/// <summary> 连击 </summary>
-	public ComboComponent combo;
+	public HCombo combo;
 	/// <summary> 武器 </summary>
-	public WeaponComponent weapon;
+	public HWeapon weapon;
 }

@@ -36,7 +36,7 @@ public class InputCharacter : InputControl {
 		Movement();
 	}
 	public void OnJump(InputValue inputValue) {
-		ManagerCharacter.I.Jump(MoveDirection());
+		ManagerCharacter.I.Jump();
 		if (moveInput == Vector2.zero) { return; }
 		isMoveAfterAttack = true;
 	}
@@ -50,8 +50,7 @@ public class InputCharacter : InputControl {
 
 	private void Movement() {
 		isMoveAfterAttack = false;
-		if (isSprint) { ManagerCharacter.I.Sprint(MoveDirection()); }
-		else { ManagerCharacter.I.Move(MoveDirection()); }
+		ManagerCharacter.I.Move(MoveDirection(), isSprint);
 	}
 	private Vector2 MoveDirection() {
 		return Utilities.TransferDirection(CurrentCamera.Forward, CurrentCamera.Right, moveInput);

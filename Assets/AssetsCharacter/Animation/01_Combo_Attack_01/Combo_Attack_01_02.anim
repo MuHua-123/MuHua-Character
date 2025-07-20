@@ -275582,29 +275582,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.18333334
-    functionName: EnterTrigger
-    data: 2
+    functionName: Trigger
+    data: Attack2
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.48333332
-    functionName: EnterTrigger
-    data: 3
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.6333333
-    functionName: ExitTrigger
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.96666664
-    functionName: AnimationExit
-    data: 
+    functionName: Trigger
+    data: Attack3
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
