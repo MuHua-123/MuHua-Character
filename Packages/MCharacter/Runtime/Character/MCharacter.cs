@@ -28,17 +28,17 @@ namespace MuHua {
 		}
 
 		/// <summary> 更新 </summary>
-		public void Update() {
+		public virtual void Update() {
 			// 更新动画器
-			animator.SetFloat("MoveSpeed", movement.Speed);
-			animator.SetBool("Grounded", movement.Grounded);
+			animator?.SetFloat("MoveSpeed", movement?.Speed ?? 0);
+			animator?.SetBool("Grounded", movement?.Grounded ?? false);
 			// 更新运动器
-			movement.Update();
+			movement?.Update();
 			// 更新指令
-			currentCommand.UpdateKinesis();
+			currentCommand?.UpdateKinesis();
 		}
 		/// <summary> 动作过渡 </summary>
-		public bool Transition(Command command) {
+		public virtual bool Transition(Command command) {
 			// 转换检测
 			bool? transition = currentCommand?.Transition(command);
 			if (!(bool)transition) { return false; }
@@ -49,7 +49,7 @@ namespace MuHua {
 			return true;
 		}
 		/// <summary> 设置状态 </summary>
-		public void SettingsState(string token, bool isTransition, bool isFloating, bool isInjured) {
+		public virtual void SettingsState(string token, bool isTransition, bool isFloating, bool isInjured) {
 			currentCommand?.Settings(token);
 			this.isTransition = isTransition;
 			this.isFloating = isFloating;
