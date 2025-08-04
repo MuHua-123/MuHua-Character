@@ -17,7 +17,5 @@ namespace MuHua {
 		public abstract void UpdateKinesis();
 		/// <summary> 完成动作 </summary>
 		public abstract void FinishKinesis();
-		/// <summary> 动画结束 </summary>
-		public abstract void AnimationExit();
 	}
 }

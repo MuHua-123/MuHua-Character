@@ -45,8 +45,5 @@ namespace MuHua {
 		public override void FinishKinesis() {
 			animator.applyRootMotion = original;
 		}
-		public override void AnimationExit() {
-			// throw new System.NotImplementedException();
-		}
 	}
 }

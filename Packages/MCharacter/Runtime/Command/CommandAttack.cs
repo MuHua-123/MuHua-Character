@@ -51,8 +51,5 @@ namespace MuHua {
 		public override void FinishKinesis() {
 			// throw new System.NotImplementedException();
 		}
-		public override void AnimationExit() {
-			// throw new System.NotImplementedException();
-		}
 	}
 }
