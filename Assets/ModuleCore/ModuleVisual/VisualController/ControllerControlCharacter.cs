@@ -10,13 +10,18 @@ public class ControllerControlCharacter : VisualController<ControlCharacter> {
 	/// <summary> 生成空间 </summary>
 	public Transform space;
 	/// <summary> 数据预制件 </summary>
-	public Transform prefab;
+	// public Transform prefab;
 
 	/// <summary> 更新可视化内容 </summary>
 	public override void UpdateVisual(ref ControlCharacter visual) {
-		HotCharacter hCharacter = null;
-		Create(ref hCharacter, prefab, space);
-		visual = ControlCharacter.AddControl(hCharacter);
+		if (SingleManager.I.loadMode == LoadMode.None) {
+			Create(ref visual, SingleManager.I.prefab, space);
+		}
+		if (SingleManager.I.loadMode == LoadMode.Hot) {
+			HotCharacter hCharacter = null;
+			Create(ref hCharacter, SingleManager.I.prefab, space);
+			visual = ControlCharacter.AddControl(hCharacter);
+		}
 		visual.Initial(Vector3.zero, Vector3.zero);
 	}
 	/// <summary> 释放可视化内容 </summary>

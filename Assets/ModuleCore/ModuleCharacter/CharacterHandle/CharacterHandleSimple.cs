@@ -5,9 +5,9 @@ using UnityEngine;
 using MuHua;
 
 /// <summary>
-/// 标准 - 角色处理器
+/// 简单 - 角色处理器
 /// </summary>
-public class CharacterHandleStandard : CharacterHandle {
+public class CharacterHandleSimple : CharacterHandle {
 
 	public ControlCharacter control;
 	public Func<bool> baseMotionTransition;
@@ -28,7 +28,7 @@ public class CharacterHandleStandard : CharacterHandle {
 		baseMotionTransition = () => Move(control, moveInput, isSprint, true);
 	}
 	public static bool Move(ControlCharacter control, Vector2 moveDirection, bool isSprint, bool isRotation) {
-		CommandMove move = new CommandMove(control.MCharacter, moveDirection, isRotation);
+		CommandSimpleMove move = new CommandSimpleMove(control.MCharacter, moveDirection, isRotation);
 		float moveSpeed = isSprint ? control.sprintSpeed : control.moveSpeed;
 		move.Settings(moveSpeed, control.acceleration);
 		return control.MCharacter.Transition(move);
@@ -38,12 +38,12 @@ public class CharacterHandleStandard : CharacterHandle {
 		baseMotionTransition = () => Jump(control);
 	}
 	public static bool Jump(ControlCharacter control) {
-		CommandJump jump = new CommandJump(control.MCharacter, control.jumpHeight);
+		CommandSimpleJump jump = new CommandSimpleJump(control.MCharacter, control.jumpHeight);
 		return control.MCharacter.Transition(jump);
 	}
 
 	public override void Attack(bool isAttack) {
-		baseMotionTransition = () => Attack(control, isAttack);
+		// baseMotionTransition = () => Attack(control, isAttack);
 	}
 	public static bool Attack(ControlCharacter control, bool isAttack) {
 		CommandAttack attack = new CommandAttack(control.MCharacter, isAttack);

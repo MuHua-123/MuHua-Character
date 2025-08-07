@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class HotCharacterCollision : HotCharacter {
 	[Header("扩展功能")]
+	/// <summary> 控制器 </summary>
 	public CharacterController controller;
 
 	[Header("特效属性")]

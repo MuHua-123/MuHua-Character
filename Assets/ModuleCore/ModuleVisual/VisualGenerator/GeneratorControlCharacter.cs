@@ -9,11 +9,11 @@ public class GeneratorControlCharacter : VisualGenerator<ControlCharacter> {
 	/// <summary> 生成空间 </summary>
 	public Transform space;
 	/// <summary> 数据预制件 </summary>
-	public Transform prefab;
+	// public Transform prefab;
 
 	public override ControlCharacter CreateVisual(Transform original) {
 		ControlCharacter visual = null;
-		UpdateVisual(ref visual, prefab);
+		UpdateVisual(ref visual, SingleManager.I.prefab);
 		return visual;
 	}
 

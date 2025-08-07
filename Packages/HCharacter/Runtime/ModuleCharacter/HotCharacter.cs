@@ -26,6 +26,11 @@ public abstract class HotCharacter : MonoBehaviour {
 	public ICharacterFunc func;
 	/// <summary> 动画触发 </summary>
 	public virtual void Trigger(string value) => func?.Trigger(value);
+
+	/// <summary> 添加组件 </summary>
+	public T AddComponent<T>() where T : MonoBehaviour {
+		return gameObject.AddComponent<T>();
+	}
 }
 /// <summary>
 /// 动画事件接口

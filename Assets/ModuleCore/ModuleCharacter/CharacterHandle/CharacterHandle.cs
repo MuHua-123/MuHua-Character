@@ -5,17 +5,19 @@ using UnityEngine;
 /// <summary>
 /// 角色处理器
 /// </summary>
-public interface ICharacterHandle {
+public abstract class CharacterHandle {
 	/// <summary> 角色控制器 </summary>
-	public ControlCharacter Control { get; }
+	public abstract ControlCharacter Control { get; }
 	/// <summary> 完成转换 </summary>
-	public bool IsTransition { get; }
+	public abstract bool IsTransition { get; }
+	/// <summary> 更新指令 </summary>
+	public abstract void Update();
 	/// <summary> 指令：创建 </summary>
-	public void Create();
+	public abstract void Create();
 	/// <summary> 指令：移动 </summary>
-	public void Move(Vector2 moveInput, bool isSprint);
+	public abstract void Move(Vector2 moveInput, bool isSprint);
 	/// <summary> 指令：跳跃 </summary>
-	public void Jump();
+	public abstract void Jump();
 	/// <summary> 指令：攻击 </summary>
-	public void Attack(bool isAttack);
+	public abstract void Attack(bool isAttack);
 }
