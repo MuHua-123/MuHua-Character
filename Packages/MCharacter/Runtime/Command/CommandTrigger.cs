@@ -8,7 +8,7 @@ namespace MuHua {
 	/// </summary>
 	public class CommandTrigger : Command {
 		/// <summary> 基础角色 </summary>
-		public readonly MCharacter character;
+		public readonly ModuleCharacter character;
 
 		/// <summary> 触发值 </summary>
 		public string value;
@@ -22,7 +22,7 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public CommandTrigger(MCharacter character, string value, bool rootMotion) {
+		public CommandTrigger(ModuleCharacter character, string value, bool rootMotion) {
 			this.character = character;
 			this.value = value;
 			this.rootMotion = rootMotion;

@@ -42,7 +42,7 @@ public class CameraFreely : CameraController {
 	}
 
 	private void LateUpdate() {
-		CCharacter player = ManagerCharacter.I.CurrentControl;
+		ControlCharacter player = ManagerCharacter.I.CurrentControl;
 
 		if (player == null) { return; }
 

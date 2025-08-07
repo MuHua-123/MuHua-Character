@@ -16,13 +16,13 @@ public class DataCharacter {
 	/// <summary> 跳跃高度 </summary>
 	public float jumpHeight = 2;
 
-	public DataCharacter(HCharacterCollision hCharacter) {
+	public DataCharacter(HotCharacterCollision hCharacter) {
 		moveSpeed = hCharacter.moveSpeed;
 		sprintSpeed = hCharacter.sprintSpeed;
 		acceleration = hCharacter.acceleration;
 		jumpHeight = hCharacter.jumpHeight;
 	}
-	public DataCharacter(HCharacterStandard hCharacter) {
+	public DataCharacter(HotCharacterStandard hCharacter) {
 		moveSpeed = hCharacter.moveSpeed;
 		sprintSpeed = hCharacter.sprintSpeed;
 		acceleration = hCharacter.acceleration;

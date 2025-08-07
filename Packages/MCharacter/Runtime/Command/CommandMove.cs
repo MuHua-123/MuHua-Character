@@ -8,7 +8,7 @@ namespace MuHua {
 	/// </summary>
 	public class CommandMove : Command {
 		/// <summary> 基础角色 </summary>
-		public readonly MCharacter character;
+		public readonly ModuleCharacter character;
 
 		/// <summary> 移动速度 </summary>
 		public float moveSpeed = 2;
@@ -27,7 +27,7 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public CommandMove(MCharacter character, Vector2 moveDirection, bool isRotation) {
+		public CommandMove(ModuleCharacter character, Vector2 moveDirection, bool isRotation) {
 			this.character = character;
 			this.moveDirection = moveDirection;
 			this.isRotation = isRotation;

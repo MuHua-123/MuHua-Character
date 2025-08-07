@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 角色热更数据
 /// </summary>
-public abstract class HCharacter : MonoBehaviour {
+public abstract class HotCharacter : MonoBehaviour {
 	[Header("基本组件")]
 	/// <summary> 地面图层 </summary>
 	public LayerMask ground;

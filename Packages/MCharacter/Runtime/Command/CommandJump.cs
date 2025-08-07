@@ -8,7 +8,7 @@ namespace MuHua {
 	/// </summary>
 	public class CommandJump : Command {
 		/// <summary> 基础角色 </summary>
-		public readonly MCharacter character;
+		public readonly ModuleCharacter character;
 
 		/// <summary> 跳跃高度 </summary>
 		public float jumpHeight;
@@ -25,7 +25,7 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public CommandJump(MCharacter character, float jumpHeight) {
+		public CommandJump(ModuleCharacter character, float jumpHeight) {
 			this.character = character;
 			this.jumpHeight = jumpHeight;
 		}

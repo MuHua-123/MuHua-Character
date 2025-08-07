@@ -6,23 +6,23 @@ using MuHua;
 /// <summary>
 /// 碰撞 - 角色控制器
 /// </summary>
-public class CCharacterCollision : CCharacter, ICharacterFunc {
+public class ControlCharacterCollision : ControlCharacter, ICharacterFunc {
 
 	public DataCharacter dCharacter;
-	public MCharacter mCharacter;
-	public HCharacterCollision hCharacter;
+	public ModuleCharacter mCharacter;
+	public HotCharacterCollision hCharacter;
 	public MovementCollision movement;
 
-	public override MCharacter MCharacter => mCharacter;
+	public override ModuleCharacter MCharacter => mCharacter;
 	public override DataCharacter DCharacter => dCharacter;
 
 	public override void Initial(Vector3 position, Vector3 eulerAngles) {
-		hCharacter = GetComponent<HCharacterCollision>();
+		hCharacter = GetComponent<HotCharacterCollision>();
 		// 创建运动器
 		movement = new MovementCollision(hCharacter.controller, hCharacter.ground);
 		movement.Settings(position, eulerAngles);
 		// 创建角色模型
-		mCharacter = new MCharacter();
+		mCharacter = new ModuleCharacter();
 		mCharacter.Settings(hCharacter.animator, movement, new CommandIdle());
 		// 载入功能
 		hCharacter.func = this;

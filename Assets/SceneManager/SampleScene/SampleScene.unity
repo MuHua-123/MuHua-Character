@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c273632b651a0448b6b0a9213ec64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControllerCCharacter: {fileID: 1449266547}
-  GeneratorCCharacter: {fileID: 489577140}
+  ControllerControlCharacter: {fileID: 1449266547}
+  GeneratorControlCharacter: {fileID: 489577140}
   HEffects: {fileID: 1045991786}
 --- !u!4 &27471127
 Transform:
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 489577139}
   - component: {fileID: 489577140}
   m_Layer: 0
-  m_Name: GeneratorCCharacter
+  m_Name: GeneratorControlCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 1449266546}
   - component: {fileID: 1449266547}
   m_Layer: 0
-  m_Name: ControllerCCharacter
+  m_Name: ControllerControlCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
