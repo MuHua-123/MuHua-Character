@@ -31,8 +31,8 @@ namespace MuHua {
 			this.character = character;
 			this.moveDirection = moveDirection;
 			this.isRotation = isRotation;
-			moveSpeed = movement.MoveSpeed;
-			acceleration = movement.Acceleration;
+			moveSpeed = movement.moveSpeed;
+			acceleration = movement.acceleration;
 		}
 
 		public void Settings(float moveSpeed, float acceleration) {
@@ -55,7 +55,7 @@ namespace MuHua {
 		}
 		public override void UpdateKinesis() {
 			// 移动结束
-			if (movement.Speed == 0) { character.Transition(new CommandIdle()); }
+			if (movement.speed == 0) { character.Transition(new CommandIdle()); }
 		}
 		public override void FinishKinesis() {
 			animator.applyRootMotion = true;

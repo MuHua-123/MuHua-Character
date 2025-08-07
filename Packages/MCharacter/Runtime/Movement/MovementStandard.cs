@@ -12,9 +12,6 @@ namespace MuHua {
 		/// <summary> 变换 </summary>
 		public readonly Transform transform;
 
-		public float moveSpeed;// 移动速度
-		public float currentSpeed;// 当前速度
-		public float acceleration;// 加速度
 		public float animationBlend;// 动画混合速度
 		public Vector2 moveDirection;// 移动方向
 
@@ -23,17 +20,12 @@ namespace MuHua {
 		public float rotationVelocity;// 旋转速度
 		public float rotationSmoothTime = 0.12f;// 旋转平滑 Range(0.0f, 0.3f)
 
-		public bool grounded = true;// 是否接地
 		public float verticalVelocity;// 垂直速度
 		public float groundedRadius = 0.14f;// 地面检测半径
 
 		/// <summary> 垂直重力 </summary>
 		public float Gravity => Physics.gravity.y;
 
-		public override float Speed => currentSpeed;
-		public override float MoveSpeed => moveSpeed;
-		public override float Acceleration => acceleration;
-		public override bool Grounded => grounded;
 		public override Vector3 Position => transform.position;
 
 		public MovementStandard(Transform transform, LayerMask groundLayers) {
@@ -64,7 +56,7 @@ namespace MuHua {
 		/// <summary> 停止运动 </summary>
 		public override void Stop() {
 			moveDirection = Vector2.zero;
-			currentSpeed = animationBlend = 0.0f;
+			speed = animationBlend = 0.0f;
 		}
 		/// <summary> 更新 </summary>
 		public override void Update() {
@@ -72,10 +64,10 @@ namespace MuHua {
 			if (moveDirection == Vector2.zero) moveSpeed = 0.0f;
 
 			// 当前速度
-			currentSpeed = Mathf.Lerp(currentSpeed, moveSpeed, Time.deltaTime * acceleration);
+			speed = Mathf.Lerp(speed, moveSpeed, Time.deltaTime * acceleration);
 
 			// 四舍五入到小数点后3位
-			currentSpeed = Mathf.Round(currentSpeed * 1000f) / 1000f;
+			speed = Mathf.Round(speed * 1000f) / 1000f;
 
 			animationBlend = Mathf.Lerp(animationBlend, moveSpeed, Time.deltaTime * acceleration);
 			if (animationBlend < 0.01f) animationBlend = 0f;
@@ -95,13 +87,13 @@ namespace MuHua {
 
 				// 移动
 				Vector3 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
-				Vector3 horizontal = targetDirection.normalized * (currentSpeed * Time.deltaTime);
+				Vector3 horizontal = targetDirection.normalized * (speed * Time.deltaTime);
 				Vector3 vertical = new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime;
 				transform.position += horizontal + vertical;
 			}
 			else {
 				// 移动
-				Vector3 horizontal = inputDirection * (currentSpeed * Time.deltaTime);
+				Vector3 horizontal = inputDirection * (speed * Time.deltaTime);
 				Vector3 vertical = new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime;
 				transform.position += horizontal + vertical;
 			}

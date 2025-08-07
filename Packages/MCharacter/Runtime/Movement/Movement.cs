@@ -8,13 +8,14 @@ namespace MuHua {
 	/// </summary>
 	public abstract class Movement {
 		/// <summary> 当前速度 </summary>
-		public abstract float Speed { get; }
+		public float speed;
 		/// <summary> 移动速度 </summary>
-		public abstract float MoveSpeed { get; }
+		public float moveSpeed;
 		/// <summary> 加速度 </summary>
-		public abstract float Acceleration { get; }
+		public float acceleration;
 		/// <summary> 是否接地 </summary>
-		public abstract bool Grounded { get; }
+		public bool grounded;
+
 		/// <summary> 当前位置 </summary>
 		public abstract Vector3 Position { get; }
 

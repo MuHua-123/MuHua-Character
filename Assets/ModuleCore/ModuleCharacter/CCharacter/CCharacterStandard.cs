@@ -20,9 +20,10 @@ public class CCharacterStandard : CCharacter {
 		hCharacter = GetComponent<HCharacterStandard>();
 		// 创建运动器
 		movement = new MovementStandard(transform, hCharacter.ground);
+		movement.Settings(position, eulerAngles);
 		// 创建角色模型
-		mCharacter = new MCharacter(hCharacter.animator, movement);
-		mCharacter.movement.Settings(position, eulerAngles);
+		mCharacter = new MCharacter();
+		mCharacter.Settings(hCharacter.animator, movement, new CommandIdle());
 		// hCharacter.animationEvents = this;
 
 		dCharacter = new DataCharacter(hCharacter);

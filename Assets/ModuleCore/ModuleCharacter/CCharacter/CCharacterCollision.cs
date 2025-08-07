@@ -20,9 +20,10 @@ public class CCharacterCollision : CCharacter, ICharacterFunc {
 		hCharacter = GetComponent<HCharacterCollision>();
 		// 创建运动器
 		movement = new MovementCollision(hCharacter.controller, hCharacter.ground);
+		movement.Settings(position, eulerAngles);
 		// 创建角色模型
-		mCharacter = new MCharacter(hCharacter.animator, movement);
-		mCharacter.movement.Settings(position, eulerAngles);
+		mCharacter = new MCharacter();
+		mCharacter.Settings(hCharacter.animator, movement, new CommandIdle());
 		// 载入功能
 		hCharacter.func = this;
 		// 载入数据
@@ -47,6 +48,6 @@ public class CCharacterCollision : CCharacter, ICharacterFunc {
 		ModuleVisual.I.HEffects.CreateVisual(prefab).Settings(combo);
 	}
 	public void SettingsState(string token, bool isTransition, bool isFloating, bool isInjured) {
-		mCharacter.SettingsState(token, isTransition, isFloating, isInjured);
+		mCharacter.Settings(token, isTransition, isFloating, isInjured);
 	}
 }
