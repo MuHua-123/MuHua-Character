@@ -9,10 +9,10 @@ using MuHua;
 /// </summary>
 public class CharacterHandleSimple : CharacterHandle {
 
-	public ControlCharacter control;
+	public CharacterControl control;
 	public Func<bool> CommandTransition;
 
-	public override ControlCharacter Control => control;
+	public override CharacterControl Control => control;
 	public override bool IsTransition => CommandTransition == null;
 
 	public override void Update() {
@@ -25,14 +25,14 @@ public class CharacterHandleSimple : CharacterHandle {
 	}
 
 	public override void Create() {
-		ModuleVisual.I.ControllerControlCharacter.UpdateVisual(ref control);
+		ModuleVisual.I.ControllerCharacterControl.UpdateVisual(ref control);
 	}
 
 	public override void Move(Vector2 moveInput, bool isSprint) {
 		ManagerCharacter.I.prepareCommand = "Move";
 		CommandTransition = () => Move(control, moveInput, isSprint, true);
 	}
-	public static bool Move(ControlCharacter control, Vector2 moveDirection, bool isSprint, bool isRotation) {
+	public static bool Move(CharacterControl control, Vector2 moveDirection, bool isSprint, bool isRotation) {
 		CommandSimpleMove move = new CommandSimpleMove(control.MCharacter, moveDirection, isRotation);
 		float moveSpeed = isSprint ? control.sprintSpeed : control.moveSpeed;
 		move.Settings(moveSpeed, control.acceleration);
@@ -43,7 +43,7 @@ public class CharacterHandleSimple : CharacterHandle {
 		ManagerCharacter.I.prepareCommand = "Jump";
 		CommandTransition = () => Jump(control);
 	}
-	public static bool Jump(ControlCharacter control) {
+	public static bool Jump(CharacterControl control) {
 		CommandSimpleJump jump = new CommandSimpleJump(control.MCharacter, control.jumpHeight);
 		return control.MCharacter.Transition(jump);
 	}
@@ -51,7 +51,7 @@ public class CharacterHandleSimple : CharacterHandle {
 	public override void Attack(bool isAttack) {
 		// baseMotionTransition = () => Attack(control, isAttack);
 	}
-	public static bool Attack(ControlCharacter control, bool isAttack) {
+	public static bool Attack(CharacterControl control, bool isAttack) {
 		CommandAttack attack = new CommandAttack(control.MCharacter, isAttack);
 		return control.MCharacter.Transition(attack);
 	}

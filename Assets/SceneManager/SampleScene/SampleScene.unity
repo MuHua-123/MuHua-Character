@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c273632b651a0448b6b0a9213ec64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControllerControlCharacter: {fileID: 1449266547}
-  GeneratorControlCharacter: {fileID: 489577140}
+  ControllerCharacterControl: {fileID: 1449266547}
+  GeneratorCharacterControl: {fileID: 489577140}
   HEffects: {fileID: 1045991786}
 --- !u!4 &27471127
 Transform:
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 489577139}
   - component: {fileID: 489577140}
   m_Layer: 0
-  m_Name: GeneratorControlCharacter
+  m_Name: GeneratorCharacterControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 95fddea4-e35e-4fbd-a893-72d97aab6fb0
+  m_DefaultActionMap: InputCharacter
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &1449266545
@@ -1650,7 +1650,7 @@ GameObject:
   - component: {fileID: 1449266546}
   - component: {fileID: 1449266547}
   m_Layer: 0
-  m_Name: ControllerControlCharacter
+  m_Name: ControllerCharacterControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2342,7 +2342,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 95fddea4-e35e-4fbd-a893-72d97aab6fb0
+  m_DefaultActionMap: InputCharacter
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

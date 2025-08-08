@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 动画状态
 /// </summary>
-public class HCharacterState : StateMachineBehaviour {
+public class CharacterState : StateMachineBehaviour {
 	/// <summary> 是否允许转换 </summary>
 	public string token;
 	/// <summary> 是否允许转换 </summary>

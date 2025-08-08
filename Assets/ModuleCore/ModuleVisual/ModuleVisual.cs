@@ -10,11 +10,11 @@ public class ModuleVisual : ModuleSingle<ModuleVisual> {
 
 	[Header("控制器")]
 	/// <summary> 角色控制器 </summary>
-	public VisualController<ControlCharacter> ControllerControlCharacter;
+	public VisualController<CharacterControl> ControllerCharacterControl;
 
 	[Header("生成器")]
 	/// <summary> 角色生成器 </summary>
-	public VisualGenerator<ControlCharacter> GeneratorControlCharacter;
+	public VisualGenerator<CharacterControl> GeneratorCharacterControl;
 	/// <summary> 特效生成器 </summary>
 	public VisualGenerator<HEffects> HEffects;
 

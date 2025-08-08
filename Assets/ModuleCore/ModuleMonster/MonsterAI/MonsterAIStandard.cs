@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 标准 - 角色热更数据
+/// 标准 - 怪物AI
 /// </summary>
-public class HotCharacterStandard : HotCharacter {
+public class MonsterAIStandard : MonoBehaviour {
 
 }

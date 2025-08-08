@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public abstract class CharacterHandle {
 	/// <summary> 角色控制器 </summary>
-	public abstract ControlCharacter Control { get; }
+	public abstract CharacterControl Control { get; }
 	/// <summary> 完成转换 </summary>
 	public abstract bool IsTransition { get; }
 	/// <summary> 更新指令 </summary>

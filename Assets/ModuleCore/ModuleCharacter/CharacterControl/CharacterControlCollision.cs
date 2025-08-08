@@ -6,17 +6,17 @@ using MuHua;
 /// <summary>
 /// 碰撞 - 角色控制器
 /// </summary>
-public class ControlCharacterCollision : ControlCharacter {
+public class CharacterControlCollision : CharacterControl {
 
-	public ModuleCharacter mCharacter;
-	public HotCharacterCollision hCharacter;
+	public CharacterModel mCharacter;
+	public CharacterHotCollision hCharacter;
 	public MovementCollision movement;
 
-	public override ModuleCharacter MCharacter => mCharacter;
+	public override CharacterModel MCharacter => mCharacter;
 
 	public override void Initial(Vector3 position, Vector3 eulerAngles) {
 		// 载入功能
-		hCharacter = GetComponent<HotCharacterCollision>();
+		hCharacter = GetComponent<CharacterHotCollision>();
 		hCharacter.func = this;
 		moveSpeed = hCharacter.moveSpeed;
 		sprintSpeed = hCharacter.sprintSpeed;
@@ -26,7 +26,7 @@ public class ControlCharacterCollision : ControlCharacter {
 		movement = new MovementCollision(hCharacter.controller, hCharacter.ground);
 		movement.Settings(position, eulerAngles);
 		// 创建角色模型
-		mCharacter = new ModuleCharacter();
+		mCharacter = new CharacterModel();
 		mCharacter.Settings(hCharacter.animator, movement, new CommandIdle());
 	}
 	public override void Trigger(string value) {

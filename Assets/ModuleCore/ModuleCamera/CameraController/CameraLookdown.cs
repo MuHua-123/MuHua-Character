@@ -43,7 +43,7 @@ public class CameraLookdown : CameraController {
 	}
 
 	private void LateUpdate() {
-		ControlCharacter player = ManagerCharacter.I.CurrentControl;
+		CharacterControl player = ManagerCharacter.I.CurrentControl;
 		if (player == null) { return; }
 		// 计算目标位置
 		Vector3 desiredPosition = player.transform.position + offset;

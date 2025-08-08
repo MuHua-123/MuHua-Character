@@ -6,16 +6,16 @@ using MuHua;
 /// <summary>
 /// 标准角色 - 控制器
 /// </summary>
-public class ControlCharacterStandard : ControlCharacter {
+public class CharacterControlStandard : CharacterControl {
 
-	public ModuleCharacter mCharacter;
-	public HotCharacterStandard hCharacter;
+	public CharacterModel mCharacter;
+	public CharacterHotStandard hCharacter;
 	public MovementStandard movement;
 
-	public override ModuleCharacter MCharacter => mCharacter;
+	public override CharacterModel MCharacter => mCharacter;
 
 	public override void Initial(Vector3 position, Vector3 eulerAngles) {
-		hCharacter = GetComponent<HotCharacterStandard>();
+		hCharacter = GetComponent<CharacterHotStandard>();
 		hCharacter.func = this;
 		moveSpeed = hCharacter.moveSpeed;
 		sprintSpeed = hCharacter.sprintSpeed;
@@ -25,7 +25,7 @@ public class ControlCharacterStandard : ControlCharacter {
 		movement = new MovementStandard(transform, hCharacter.ground);
 		movement.Settings(position, eulerAngles);
 		// 创建角色模型
-		mCharacter = new ModuleCharacter();
+		mCharacter = new CharacterModel();
 		mCharacter.Settings(hCharacter.animator, movement, new CommandIdle());
 	}
 

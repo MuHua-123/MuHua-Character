@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace MuHua {
 	/// <summary>
-	/// 移动 - 运动
+	/// 移动 - 简单命令
 	/// </summary>
-	public class CommandMove : Command {
+	public class CommandSimpleMove : Command {
 		/// <summary> 基础角色 </summary>
 		public readonly CharacterModel character;
 
@@ -20,14 +20,12 @@ namespace MuHua {
 		public bool isRotation;
 
 		/// <summary> 是否允许转换 </summary>
-		public bool IsFloating => character.isFloating;
+		// public bool IsFloating => character.isFloating;
 
-		/// <summary> 动画器 </summary>
-		public Animator animator => character.animator;
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public CommandMove(CharacterModel character, Vector2 moveDirection, bool isRotation) {
+		public CommandSimpleMove(CharacterModel character, Vector2 moveDirection, bool isRotation) {
 			this.character = character;
 			this.moveDirection = moveDirection;
 			this.isRotation = isRotation;
@@ -42,15 +40,15 @@ namespace MuHua {
 
 		public override bool Transition(Command command) {
 			// 如果是移动，则可以转换
-			if (command is CommandMove move) { return true; }
+			if (command is CommandSimpleMove move) { return true; }
 			// 浮空状态不可以转换
-			return !IsFloating;
+			// return !IsFloating;
+			return true;
 		}
 		public override void Settings(string token) {
 			// throw new System.NotImplementedException();
 		}
 		public override void StartKinesis() {
-			animator.applyRootMotion = false;
 			movement.Move(moveDirection, moveSpeed, acceleration, isRotation);
 		}
 		public override void UpdateKinesis() {
@@ -58,7 +56,7 @@ namespace MuHua {
 			if (movement.speed == 0) { character.Transition(new CommandIdle()); }
 		}
 		public override void FinishKinesis() {
-			animator.applyRootMotion = true;
+			// animator.applyRootMotion = true;
 		}
 	}
 }

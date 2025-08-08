@@ -6,7 +6,7 @@ namespace MuHua {
 	/// <summary>
 	/// 角色 - 模块
 	/// </summary>
-	public class ModuleCharacter {
+	public class CharacterModel {
 		/// <summary> 动画器 </summary>
 		public Animator animator;
 		/// <summary> 运动器 </summary>

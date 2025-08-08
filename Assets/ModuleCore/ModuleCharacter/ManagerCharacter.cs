@@ -21,7 +21,7 @@ public class ManagerCharacter : ModuleSingle<ManagerCharacter> {
 	/// <summary> 当前角色处理器 </summary>
 	public CharacterHandle handle => Handle();
 	/// <summary> 当前玩家控制器 </summary>
-	public ControlCharacter CurrentControl => handle.Control;
+	public CharacterControl CurrentControl => handle.Control;
 	/// <summary> 完成转换 </summary>
 	public bool IsTransition => handle.IsTransition;
 

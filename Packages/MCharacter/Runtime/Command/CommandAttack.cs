@@ -8,7 +8,7 @@ namespace MuHua {
 	/// </summary>
 	public class CommandAttack : Command {
 		/// <summary> 基础角色 </summary>
-		public readonly ModuleCharacter character;
+		public readonly CharacterModel character;
 
 		/// <summary> 发动攻击 </summary>
 		public bool isAttack = false;
@@ -23,7 +23,7 @@ namespace MuHua {
 		/// <summary> 运动器 </summary>
 		public Movement movement => character.movement;
 
-		public CommandAttack(ModuleCharacter character, bool isAttack) {
+		public CommandAttack(CharacterModel character, bool isAttack) {
 			this.character = character;
 			this.isAttack = isAttack;
 		}
