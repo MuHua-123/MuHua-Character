@@ -9,30 +9,36 @@ public class CameraDefault : CameraController {
 
 	public Camera mainCamera;
 
+	private Vector3 position;
+	private Vector3 forward;
+	private Vector3 right;
+	private Vector3 eulerAngles;
+	private float visualField;
+
 	public override Vector3 Position {
 		get => transform.position;
-		set => transform.position = value;
+		set => position = value;
 	}
 	public override Vector3 Forward {
 		get => mainCamera.transform.forward;
-		set => mainCamera.transform.forward = value;
+		set => forward = value;
 	}
 	public override Vector3 Right {
 		get => mainCamera.transform.right;
-		set => mainCamera.transform.right = value;
+		set => right = value;
 	}
 	public override Vector3 EulerAngles {
 		get => transform.eulerAngles;
-		set => transform.eulerAngles = value;
+		set => eulerAngles = value;
 	}
 	public override float VisualField {
 		get => throw new System.NotImplementedException();
-		set => throw new System.NotImplementedException();
+		set => visualField = value;
 	}
 
-	public override void ModuleCamera_OnCameraMode(EnumCameraMode mode) {
-		gameObject.SetActive(mode == EnumCameraMode.None);
-		if (mode == EnumCameraMode.None) { ModuleCamera.CurrentCamera = this; }
+	public override void ModuleCamera_OnCameraMode(CameraMode mode) {
+		gameObject.SetActive(mode == CameraMode.None);
+		if (mode == CameraMode.None) { ModuleCamera.CurrentCamera = this; }
 	}
 
 	public override void ResetCamera() {

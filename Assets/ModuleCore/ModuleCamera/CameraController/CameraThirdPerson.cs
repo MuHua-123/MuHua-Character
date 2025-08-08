@@ -4,7 +4,7 @@ using MuHua;
 /// <summary>
 /// 第三人称相机
 /// </summary>
-public class CameraThirdPerson : CameraController {
+public class CameraThirdperson : CameraController {
 	public Camera TargetCamera;
 	public Vector3 offset; // 相机与玩家的偏移量
 	[Range(0, 0.5f)] public float smoothSpeed = 0.125f; // 平滑跟随速度
@@ -30,10 +30,9 @@ public class CameraThirdPerson : CameraController {
 		set => throw new System.NotImplementedException();
 	}
 
-	public override void ModuleCamera_OnCameraMode(EnumCameraMode mode) {
-		ModuleCamera.CurrentCamera = this;
-		// gameObject.SetActive(mode == EnumCameraMode.ThirdPerson);
-		// if (mode == EnumCameraMode.ThirdPerson) { ModuleCamera.CurrentCamera = this; }
+	public override void ModuleCamera_OnCameraMode(CameraMode mode) {
+		gameObject.SetActive(mode == CameraMode.Thirdperson);
+		if (mode == CameraMode.Thirdperson) { ModuleCamera.CurrentCamera = this; }
 	}
 	public override void ResetCamera() {
 		// Position = HotUpdateScene.I.StartPoint.position;
@@ -42,9 +41,7 @@ public class CameraThirdPerson : CameraController {
 
 	private void LateUpdate() {
 		ControlCharacter player = ManagerCharacter.I.CurrentControl;
-
 		if (player == null) { return; }
-
 		// 计算目标位置
 		Vector3 desiredPosition = player.transform.position + offset;
 		// 平滑过渡到目标位置

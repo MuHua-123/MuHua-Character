@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 自由 - 相机
 /// </summary>
-public class CameraFreely : CameraController {
+public class CameraLookdown : CameraController {
 
 	public Camera mainCamera;
 	public Vector3 offset; // 相机与玩家的偏移量
@@ -26,15 +26,16 @@ public class CameraFreely : CameraController {
 	}
 	public override Vector3 EulerAngles {
 		get => transform.eulerAngles;
-		set => transform.eulerAngles = value;
+		set => transform.eulerAngles = new Vector3(0, value.y, 0);
 	}
 	public override float VisualField {
 		get => throw new System.NotImplementedException();
 		set => throw new System.NotImplementedException();
 	}
 
-	public override void ModuleCamera_OnCameraMode(EnumCameraMode mode) {
-		ModuleCamera.CurrentCamera = this;
+	public override void ModuleCamera_OnCameraMode(CameraMode mode) {
+		gameObject.SetActive(mode == CameraMode.LookDown);
+		if (mode == CameraMode.LookDown) { ModuleCamera.CurrentCamera = this; }
 	}
 
 	public override void ResetCamera() {
@@ -43,9 +44,7 @@ public class CameraFreely : CameraController {
 
 	private void LateUpdate() {
 		ControlCharacter player = ManagerCharacter.I.CurrentControl;
-
 		if (player == null) { return; }
-
 		// 计算目标位置
 		Vector3 desiredPosition = player.transform.position + offset;
 		// 平滑过渡到目标位置

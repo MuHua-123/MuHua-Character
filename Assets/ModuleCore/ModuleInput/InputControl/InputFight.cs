@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// 角色 - 输入
+/// 战斗 - 输入
 /// </summary>
-public class InputCharacter : InputControl {
+public class InputFight : InputControl {
 
 	public bool isSprint = false;
 	public Vector2 moveInput;

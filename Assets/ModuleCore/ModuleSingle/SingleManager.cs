@@ -9,24 +9,20 @@ using MuHua;
 public class SingleManager : ModuleSingle<SingleManager> {
 	/// <summary> 角色预制件 </summary>
 	public Transform prefab;
-	/// <summary> 角色处理器类型 </summary>
-	public HandleType handleType = HandleType.Simple;
 	/// <summary> 加载模式 </summary>
 	public LoadMode loadMode = LoadMode.Hot;
+	/// <summary> 输入模式 </summary>
+	public InputMode inputMode = InputMode.Simple;
+	/// <summary> 相机模式 </summary>
+	public CameraMode cameraMode = CameraMode.LookDown;
+	/// <summary> 角色处理器类型 </summary>
+	public HandleType handleType = HandleType.Simple;
 
 	protected override void Awake() => NoReplace();
 
 	private void Start() {
-		ModuleCamera.Settings(EnumCameraMode.MoveAxis);
+		ModuleCamera.Settings(cameraMode);
+		ModuleInput.Settings(inputMode);
 		ManagerCharacter.I.Create();
 	}
-}
-/// <summary>
-/// 加载模式
-/// </summary>
-public enum LoadMode {
-	/// <summary> 无 </summary>
-	None,
-	/// <summary> 热更新 </summary>
-	Hot
 }

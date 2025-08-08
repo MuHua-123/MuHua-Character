@@ -5,15 +5,13 @@ using UnityEngine;
 using MuHua;
 
 /// <summary>
-/// 角色处理器类型
-/// </summary>
-public enum HandleType {
-	Simple, Standard,
-}
-/// <summary>
 /// 玩家管理器
 /// </summary>
 public class ManagerCharacter : ModuleSingle<ManagerCharacter> {
+	/// <summary> 预备指令 </summary>
+	public string prepareCommand;
+	/// <summary> 当前指令 </summary>
+	public string currentCommand;
 
 	/// <summary> 简单处理器 </summary>
 	public CharacterHandleSimple simpleHandle;
@@ -54,4 +52,12 @@ public class ManagerCharacter : ModuleSingle<ManagerCharacter> {
 	public void Attack(bool isAttack) => handle.Attack(isAttack);
 	#endregion
 }
-
+/// <summary>
+/// 角色处理器类型
+/// </summary>
+public enum HandleType {
+	/// <summary> 简单处理器 </summary>
+	Simple,
+	/// <summary> 标准处理器 </summary>
+	Standard,
+}

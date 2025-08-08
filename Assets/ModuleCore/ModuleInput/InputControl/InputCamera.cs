@@ -4,20 +4,22 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// 摄像机 - 输入器
+/// 相机 - 输入器
 /// </summary>
 public class InputCamera : InputControl {
 	public bool isRotating = false;
 	public Vector2 delta;
 
-	private bool isEnable = true;
+	private bool isEnable = false;
 	private Vector3 eulerAngles;
 	private Vector3 originalEulerAngles;
 
 	private CameraController CurrentCamera => ModuleCamera.CurrentCamera;
 
-	protected override void ModuleInput_OnInputMode(EnumInputMode mode) {
-		// isEnable = mode == EnumInputMode.ThirdPerson;
+	protected override void ModuleInput_OnInputMode(InputMode mode) {
+		isEnable = mode != InputMode.None;
+		if (!isEnable) { return; }
+		eulerAngles = originalEulerAngles = CurrentCamera.EulerAngles;
 	}
 
 	private void Update() {

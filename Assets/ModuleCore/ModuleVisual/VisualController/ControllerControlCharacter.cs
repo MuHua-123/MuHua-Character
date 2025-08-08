@@ -29,3 +29,12 @@ public class ControllerControlCharacter : VisualController<ControlCharacter> {
 		if (visual != null) { Destroy(visual.gameObject); }
 	}
 }
+/// <summary>
+/// 加载模式
+/// </summary>
+public enum LoadMode {
+	/// <summary> 无 </summary>
+	None,
+	/// <summary> 热更新 </summary>
+	Hot
+}

@@ -10,14 +10,18 @@ using MuHua;
 public class CharacterHandleSimple : CharacterHandle {
 
 	public ControlCharacter control;
-	public Func<bool> baseMotionTransition;
+	public Func<bool> CommandTransition;
 
 	public override ControlCharacter Control => control;
-	public override bool IsTransition => baseMotionTransition == null;
+	public override bool IsTransition => CommandTransition == null;
 
 	public override void Update() {
-		if (baseMotionTransition == null) { return; }
-		if (baseMotionTransition()) { baseMotionTransition = null; }
+		if (CommandTransition == null) { return; }
+		if (CommandTransition()) {
+			CommandTransition = null;
+			ManagerCharacter.I.currentCommand = ManagerCharacter.I.prepareCommand;
+			ManagerCharacter.I.prepareCommand = "";
+		}
 	}
 
 	public override void Create() {
@@ -25,7 +29,8 @@ public class CharacterHandleSimple : CharacterHandle {
 	}
 
 	public override void Move(Vector2 moveInput, bool isSprint) {
-		baseMotionTransition = () => Move(control, moveInput, isSprint, true);
+		ManagerCharacter.I.prepareCommand = "Move";
+		CommandTransition = () => Move(control, moveInput, isSprint, true);
 	}
 	public static bool Move(ControlCharacter control, Vector2 moveDirection, bool isSprint, bool isRotation) {
 		CommandSimpleMove move = new CommandSimpleMove(control.MCharacter, moveDirection, isRotation);
@@ -35,7 +40,8 @@ public class CharacterHandleSimple : CharacterHandle {
 	}
 
 	public override void Jump() {
-		baseMotionTransition = () => Jump(control);
+		ManagerCharacter.I.prepareCommand = "Jump";
+		CommandTransition = () => Jump(control);
 	}
 	public static bool Jump(ControlCharacter control) {
 		CommandSimpleJump jump = new CommandSimpleJump(control.MCharacter, control.jumpHeight);
